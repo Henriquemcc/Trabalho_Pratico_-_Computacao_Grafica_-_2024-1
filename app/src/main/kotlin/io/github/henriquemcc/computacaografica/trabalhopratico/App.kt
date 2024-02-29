@@ -3,6 +3,8 @@
  */
 package io.github.henriquemcc.computacaografica.trabalhopratico
 
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.InterfaceGrafica
+
 class App {
     val greeting: String
         get() {
@@ -12,4 +14,6 @@ class App {
 
 fun main() {
     println(App().greeting)
+    val interfaceGrafica = InterfaceGrafica()
+
 }
