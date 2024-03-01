@@ -3,7 +3,9 @@
  */
 package io.github.henriquemcc.computacaografica.trabalhopratico
 
-import io.github.henriquemcc.computacaografica.trabalhopratico.visao.InterfaceGrafica
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.Janela
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
+import javax.swing.JFrame
 
 class App {
     val greeting: String
@@ -14,6 +16,10 @@ class App {
 
 fun main() {
     println(App().greeting)
-    val interfaceGrafica = InterfaceGrafica()
+    val janela = Janela()
+    janela.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
+    janela.size = obterResolucaoTela()
+    janela.extendedState = JFrame.MAXIMIZED_BOTH
+    janela.isVisible = true
 
 }
