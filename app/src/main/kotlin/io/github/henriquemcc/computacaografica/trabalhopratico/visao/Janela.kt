@@ -3,11 +3,10 @@ package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.FlowLayout
-import javax.swing.BoxLayout
-import javax.swing.JButton
-import javax.swing.JFrame
-import javax.swing.JLabel
-import javax.swing.JPanel
+import java.awt.event.MouseEvent
+import java.awt.event.MouseListener
+import java.awt.event.MouseMotionListener
+import javax.swing.*
 
 class Janela: JFrame("Trabalho Prático - Computação Gráfica") {
     private val areaDesenho = JPanel()
@@ -22,8 +21,23 @@ class Janela: JFrame("Trabalho Prático - Computação Gráfica") {
         // Barra de status
         add(barraStatus, BorderLayout.SOUTH)
 
+        // Criando e registrando o listener para mouse e eventos de movimento do mouse
+        val handler = MouseHandler()
+        areaDesenho.addMouseListener(handler)
+        areaDesenho.addMouseMotionListener(handler)
+
         // Barra de ferramentas
         add(barraFerramentas, BorderLayout.WEST)
+
+        // Barra de menus
+        val menuArquivo = JMenu("Arquivo") // menu arquivo
+        menuArquivo.setMnemonic('A')
+        val itemSalvar = JMenuItem("Salvar") // item salvar do menu arquivo
+        itemSalvar.setMnemonic('S')
+        menuArquivo.add(itemSalvar)
+        val barra = JMenuBar()
+        jMenuBar = barra
+        barra.add(menuArquivo)
     }
 
     private class BarraFerramentas: JPanel() {
@@ -63,6 +77,64 @@ class Janela: JFrame("Trabalho Prático - Computação Gráfica") {
 
             // Equação paramétrica
             add(botaoEquacaoParametrica)
+        }
+    }
+
+    private inner class MouseHandler: MouseListener, MouseMotionListener {
+        override fun mouseClicked(event: MouseEvent?)
+        {
+            if (event != null)
+            {
+                barraStatus.text = String.format("Clicado em: [%d, %d]", event.x, event.y)
+            }
+        }
+
+        override fun mousePressed(event: MouseEvent?)
+        {
+            if (event != null)
+            {
+                barraStatus.text = String.format("Pressionado em: [%d, %d]", event.x, event.y)
+            }
+        }
+
+        override fun mouseReleased(event: MouseEvent?)
+        {
+            if (event != null)
+            {
+                barraStatus.text = String.format("Soltado em [%d, %d]", event.x, event.y)
+            }
+        }
+
+        override fun mouseEntered(event: MouseEvent?)
+        {
+            if (event != null)
+            {
+                barraStatus.text = String.format("Mouse entrou em [%d, %d]", event.x, event.y)
+            }
+        }
+
+        override fun mouseExited(event: MouseEvent?)
+        {
+            if (event != null)
+            {
+                barraStatus.text = String.format("Mouse saiu do JPanel em [%d, %d]", event.x, event.y)
+            }
+        }
+
+        override fun mouseDragged(event: MouseEvent?)
+        {
+            if (event != null)
+            {
+                barraStatus.text = String.format("Arrastado em [%d, %d]", event.x, event.y)
+            }
+        }
+
+        override fun mouseMoved(event: MouseEvent?)
+        {
+            if (event != null)
+            {
+                barraStatus.text = String.format("Movido em [%d, %d]", event.x, event.y)
+            }
         }
     }
 }
