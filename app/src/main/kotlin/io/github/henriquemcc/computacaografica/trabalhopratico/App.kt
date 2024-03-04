@@ -3,7 +3,7 @@
  */
 package io.github.henriquemcc.computacaografica.trabalhopratico
 
-import io.github.henriquemcc.computacaografica.trabalhopratico.visao.Janela
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela.Janela
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import javax.swing.JFrame
 

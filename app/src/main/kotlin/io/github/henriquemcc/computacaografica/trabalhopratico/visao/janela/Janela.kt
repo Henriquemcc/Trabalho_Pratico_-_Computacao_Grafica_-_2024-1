@@ -1,9 +1,7 @@
-package io.github.henriquemcc.computacaografica.trabalhopratico.visao
+package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
 
 import java.awt.BorderLayout
-import java.awt.Button
 import java.awt.Color
-import java.awt.FlowLayout
 import java.awt.event.*
 import javax.swing.*
 
