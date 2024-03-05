@@ -1,12 +1,12 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
 
-import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorJanela
+import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 
 class ButtonHandler(val barraFerramentas: BarraFerramentas): ActionListener
 {
-	val controladorJanela = ControladorJanela()
+	private val controladorGrafico = ControladorGrafico()
 	override fun actionPerformed(event: ActionEvent?)
 	{
 		println("ButtonHandler")
@@ -16,42 +16,42 @@ class ButtonHandler(val barraFerramentas: BarraFerramentas): ActionListener
 			{
 				barraFerramentas.botaoTranslacao ->
 				{
-					TODO("Not yet implemented")
+					controladorGrafico.ativarObtencaoTranslacao()
 				}
 
 				barraFerramentas.botaoRotacao ->
 				{
-					TODO("Not yet implemented")
+					controladorGrafico.ativarObtencaoRotacao()
 				}
 
 				barraFerramentas.botaoEscala ->
 				{
-					TODO("Not yet implemented")
+					controladorGrafico.ativarObtencaoEscala()
 				}
 
 				barraFerramentas.botaoReflexao ->
 				{
-					TODO("Not yet implemented")
+					controladorGrafico.ativarObtencaoReflexao()
 				}
 
 				barraFerramentas.botaoReta ->
 				{
-					controladorJanela.operacaoJanela = ControladorJanela.OpDesenharReta()
+					controladorGrafico.ativarObtencaoReta()
 				}
 
 				barraFerramentas.botaoCircunferencia ->
 				{
-					controladorJanela.operacaoJanela = ControladorJanela.OpDesenharCircunferencia()
+					controladorGrafico.ativarObtencaoCircunferencia()
 				}
 
 				barraFerramentas.botaoRegioesCodificadas ->
 				{
-					TODO("Not yet implemented")
+					controladorGrafico.ativarObtencaoRegioesCodificadas()
 				}
 
 				barraFerramentas.botaoEquacaoParametrica ->
 				{
-					TODO("Not yet implemented")
+					controladorGrafico.ativarObtencaoEquacaoParametrica()
 				}
 			}
 		}

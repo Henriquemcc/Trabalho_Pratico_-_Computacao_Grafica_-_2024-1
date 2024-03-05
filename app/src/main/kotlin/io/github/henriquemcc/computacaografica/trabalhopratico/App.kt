@@ -21,5 +21,4 @@ fun main() {
     janela.size = obterResolucaoTela()
     janela.extendedState = JFrame.MAXIMIZED_BOTH
     janela.isVisible = true
-
 }
