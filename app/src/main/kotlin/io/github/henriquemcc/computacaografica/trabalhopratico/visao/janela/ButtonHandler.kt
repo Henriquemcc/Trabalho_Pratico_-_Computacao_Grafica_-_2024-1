@@ -1,5 +1,6 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
 
+import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorJanela
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 

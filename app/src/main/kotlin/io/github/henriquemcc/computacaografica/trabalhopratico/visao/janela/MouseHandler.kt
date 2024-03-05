@@ -1,6 +1,7 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorDesenho
+import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorJanela
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Reta
 import java.awt.event.MouseEvent

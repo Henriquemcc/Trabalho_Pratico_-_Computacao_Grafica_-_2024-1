@@ -1,4 +1,4 @@
-package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
+package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
 
