@@ -4,7 +4,9 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
 
 class ControladorJanela
 {
-	abstract class OperacaoJanela{}
+	abstract class OperacaoJanela{
+		abstract fun executar()
+	}
 
 	class OpDesenharReta: OperacaoJanela() {
 		var pontoInicial: Ponto? = null
@@ -16,14 +18,29 @@ class ControladorJanela
 		}
 
 		var algoritmoReta: AlgoritmoReta? = null
+
+		override fun executar()
+		{
+			TODO("Not yet implemented")
+		}
 	}
 
 	class OpDesenharCircunferencia: OperacaoJanela() {
 		var centro: Ponto? = null
 		var raio: Int = 0
+
+		override fun executar()
+		{
+			TODO("Not yet implemented")
+		}
 	}
 
-	class OpNenhuma: OperacaoJanela() {}
+	class OpNenhuma: OperacaoJanela() {
+		override fun executar()
+		{
+			TODO("Not yet implemented")
+		}
+	}
 
 	companion object {
 		var operacao: OperacaoJanela = OpNenhuma()
