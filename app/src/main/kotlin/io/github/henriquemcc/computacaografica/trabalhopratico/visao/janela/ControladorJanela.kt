@@ -6,7 +6,7 @@ class ControladorJanela
 {
 	abstract class OperacaoJanela{}
 
-	class DesenharReta: OperacaoJanela() {
+	class OpDesenharReta: OperacaoJanela() {
 		var pontoInicial: Ponto? = null
 		var pontoFinal: Ponto? = null
 
@@ -18,15 +18,15 @@ class ControladorJanela
 		var algoritmoReta: AlgoritmoReta? = null
 	}
 
-	class DesenharCircunferencia: OperacaoJanela() {
+	class OpDesenharCircunferencia: OperacaoJanela() {
 		var centro: Ponto? = null
 		var raio: Int = 0
 	}
 
-	class Nenhuma: OperacaoJanela() {}
+	class OpNenhuma: OperacaoJanela() {}
 
 	companion object {
-		var operacao: OperacaoJanela = Nenhuma()
+		var operacao: OperacaoJanela = OpNenhuma()
 	}
 
 	var operacaoJanela: OperacaoJanela
