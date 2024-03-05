@@ -5,41 +5,50 @@ import java.awt.event.MouseEvent
 class ControladorGrafico
 {
 	/* Funções executadas pelo ButtonHandler: */
-	fun ativarObtencaoReta(){
+	fun ativarObtencaoReta()
+	{
 		TODO("Not yet implemented")
 	}
 
-	fun ativarObtencaoCircunferencia(){
+	fun ativarObtencaoCircunferencia()
+	{
 		TODO("Not yet implemented")
 	}
 
-	fun ativarObtencaoTranslacao() {
+	fun ativarObtencaoTranslacao()
+	{
 		TODO("Not yet implemented")
 	}
 
-	fun ativarObtencaoRotacao() {
+	fun ativarObtencaoRotacao()
+	{
 		TODO("Not yet implemented")
 	}
 
-	fun ativarObtencaoEscala() {
+	fun ativarObtencaoEscala()
+	{
 		TODO("Not yet implemented")
 	}
 
-	fun ativarObtencaoReflexao() {
+	fun ativarObtencaoReflexao()
+	{
 		TODO("Not yet implemented")
 	}
 
-	fun ativarObtencaoRegioesCodificadas() {
+	fun ativarObtencaoRegioesCodificadas()
+	{
 		TODO("Not yet implemented")
 	}
 
-	fun ativarObtencaoEquacaoParametrica() {
+	fun ativarObtencaoEquacaoParametrica()
+	{
 		TODO("Not yet implemented")
 	}
 
 	/* Funções executadas pelo MouseHandler*/
 
-	fun clique(event: MouseEvent) {
+	fun clique(event: MouseEvent)
+	{
 		TODO("Not yet implemented")
 	}
 

@@ -4,7 +4,7 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.Contr
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 
-class ButtonHandler(val barraFerramentas: BarraFerramentas): ActionListener
+class ButtonHandler(val barraFerramentas: BarraFerramentas) : ActionListener
 {
 	private val controladorGrafico = ControladorGrafico()
 	override fun actionPerformed(event: ActionEvent?)

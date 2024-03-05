@@ -7,18 +7,21 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela.Jane
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import javax.swing.JFrame
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
+class App
+{
+	val greeting: String
+		get()
+		{
+			return "Hello World!"
+		}
 }
 
-fun main() {
-    println(App().greeting)
-    val janela = Janela()
-    janela.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
-    janela.size = obterResolucaoTela()
-    janela.extendedState = JFrame.MAXIMIZED_BOTH
-    janela.isVisible = true
+fun main()
+{
+	println(App().greeting)
+	val janela = Janela()
+	janela.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
+	janela.size = obterResolucaoTela()
+	janela.extendedState = JFrame.MAXIMIZED_BOTH
+	janela.isVisible = true
 }

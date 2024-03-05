@@ -2,7 +2,6 @@ package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
 
 import java.awt.BorderLayout
 import java.awt.Color
-import java.awt.event.*
 import javax.swing.*
 
 class Janela : JFrame("Trabalho Prático - Computação Gráfica")

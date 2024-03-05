@@ -6,7 +6,7 @@ import java.awt.event.MouseListener
 import java.awt.event.MouseMotionListener
 import javax.swing.JLabel
 
-class MouseHandler(val barraStatus: JLabel): MouseListener, MouseMotionListener
+class MouseHandler(val barraStatus: JLabel) : MouseListener, MouseMotionListener
 {
 	val controladorGrafico = ControladorGrafico()
 	override fun mouseClicked(event: MouseEvent?)
