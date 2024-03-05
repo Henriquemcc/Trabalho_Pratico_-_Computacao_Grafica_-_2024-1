@@ -5,6 +5,7 @@ import java.awt.event.ActionListener
 
 class ButtonHandler(val barraFerramentas: BarraFerramentas): ActionListener
 {
+	val controladorJanela = ControladorJanela()
 	override fun actionPerformed(event: ActionEvent?)
 	{
 		println("ButtonHandler")
@@ -34,12 +35,12 @@ class ButtonHandler(val barraFerramentas: BarraFerramentas): ActionListener
 
 				barraFerramentas.botaoReta ->
 				{
-					TODO("Not yet implemented")
+					controladorJanela.operacaoJanela = ControladorJanela.Reta()
 				}
 
 				barraFerramentas.botaoCircunferencia ->
 				{
-					TODO("Not yet implemented")
+					controladorJanela.operacaoJanela = ControladorJanela.Circunferencia()
 				}
 
 				barraFerramentas.botaoRegioesCodificadas ->
