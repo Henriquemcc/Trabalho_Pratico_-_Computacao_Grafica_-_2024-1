@@ -9,6 +9,13 @@ class ControladorJanela
 	class Reta: OperacaoJanela() {
 		var pontoInicial: Ponto? = null
 		var pontoFinal: Ponto? = null
+
+		enum class AlgoritmoReta {
+			DDA,
+			Bresenham
+		}
+
+		var algoritmoReta: AlgoritmoReta? = null
 	}
 
 	class Circunferencia: OperacaoJanela() {
