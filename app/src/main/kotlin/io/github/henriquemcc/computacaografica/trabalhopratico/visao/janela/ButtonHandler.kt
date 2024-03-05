@@ -35,12 +35,12 @@ class ButtonHandler(val barraFerramentas: BarraFerramentas): ActionListener
 
 				barraFerramentas.botaoReta ->
 				{
-					controladorJanela.operacaoJanela = ControladorJanela.Reta()
+					controladorJanela.operacaoJanela = ControladorJanela.DesenharReta()
 				}
 
 				barraFerramentas.botaoCircunferencia ->
 				{
-					controladorJanela.operacaoJanela = ControladorJanela.Circunferencia()
+					controladorJanela.operacaoJanela = ControladorJanela.DesenharCircunferencia()
 				}
 
 				barraFerramentas.botaoRegioesCodificadas ->

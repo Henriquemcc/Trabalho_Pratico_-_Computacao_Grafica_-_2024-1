@@ -6,7 +6,7 @@ class ControladorJanela
 {
 	abstract class OperacaoJanela{}
 
-	class Reta: OperacaoJanela() {
+	class DesenharReta: OperacaoJanela() {
 		var pontoInicial: Ponto? = null
 		var pontoFinal: Ponto? = null
 
@@ -18,7 +18,7 @@ class ControladorJanela
 		var algoritmoReta: AlgoritmoReta? = null
 	}
 
-	class Circunferencia: OperacaoJanela() {
+	class DesenharCircunferencia: OperacaoJanela() {
 		var centro: Ponto? = null
 		var raio: Int = 0
 	}
