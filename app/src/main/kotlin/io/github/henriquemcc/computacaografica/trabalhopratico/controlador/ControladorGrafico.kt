@@ -17,9 +17,6 @@ class ControladorGrafico
 	private class OperacaoReta(): OperacaoGrafica() {
 		var pontoInicial: Ponto? = null
 		var pontoFinal: Ponto? = null
-
-
-
 		var algoritmoReta: AlgoritmoReta? = null
 	}
 
