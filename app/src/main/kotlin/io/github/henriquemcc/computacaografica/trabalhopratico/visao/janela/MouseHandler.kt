@@ -1,6 +1,7 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
+import io.github.henriquemcc.computacaografica.trabalhopratico.controladorGrafico
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
 import java.awt.event.MouseMotionListener
@@ -8,7 +9,6 @@ import javax.swing.JLabel
 
 class MouseHandler(val barraStatus: JLabel) : MouseListener, MouseMotionListener
 {
-	val controladorGrafico = ControladorGrafico()
 	override fun mouseClicked(event: MouseEvent?)
 	{
 		if (event != null)

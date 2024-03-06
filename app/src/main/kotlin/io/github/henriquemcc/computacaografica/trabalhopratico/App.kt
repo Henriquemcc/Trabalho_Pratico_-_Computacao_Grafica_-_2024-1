@@ -3,23 +3,16 @@
  */
 package io.github.henriquemcc.computacaografica.trabalhopratico
 
+import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela.Janela
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import javax.swing.JFrame
 
-class App
-{
-	val greeting: String
-		get()
-		{
-			return "Hello World!"
-		}
-}
+val janela = Janela()
+val controladorGrafico = ControladorGrafico(janela)
 
 fun main()
 {
-	println(App().greeting)
-	val janela = Janela()
 	janela.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
 	janela.size = obterResolucaoTela()
 	janela.extendedState = JFrame.MAXIMIZED_BOTH

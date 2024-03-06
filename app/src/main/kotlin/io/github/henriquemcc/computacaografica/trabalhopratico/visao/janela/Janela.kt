@@ -1,12 +1,14 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
 
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
 import java.awt.BorderLayout
 import java.awt.Color
+import java.awt.Graphics
 import javax.swing.*
 
 class Janela : JFrame("Trabalho Prático - Computação Gráfica")
 {
-	private val areaDesenho = JPanel()
+	val areaDesenho = AreaDesenho()
 	private val barraFerramentas = BarraFerramentas()
 	private val barraStatus = JLabel("Mouse fora da área de desenho")
 
@@ -36,5 +38,27 @@ class Janela : JFrame("Trabalho Prático - Computação Gráfica")
 		val barra = JMenuBar()
 		jMenuBar = barra
 		barra.add(menuArquivo)
+	}
+
+	class AreaDesenho: JPanel() {
+
+		private val pontos = mutableListOf<Ponto>()
+
+		fun adicionarPonto(ponto: Ponto) {
+			pontos.add(ponto)
+		}
+
+		fun adicionarPontos(pontos: List<Ponto>) {
+			for (ponto in pontos)
+				this.pontos.add(ponto)
+		}
+		override fun paintComponent(g: Graphics?)
+		{
+			super.paintComponent(g)
+			g?.color = Color.RED
+			for (ponto in pontos) {
+				g?.drawOval(ponto.x, ponto.y, 1, 1)
+			}
+		}
 	}
 }

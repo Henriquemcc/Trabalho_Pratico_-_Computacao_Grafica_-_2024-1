@@ -1,12 +1,12 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
+import io.github.henriquemcc.computacaografica.trabalhopratico.controladorGrafico
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 
 class ButtonHandler(val barraFerramentas: BarraFerramentas) : ActionListener
 {
-	private val controladorGrafico = ControladorGrafico()
 	override fun actionPerformed(event: ActionEvent?)
 	{
 		println("ButtonHandler")
