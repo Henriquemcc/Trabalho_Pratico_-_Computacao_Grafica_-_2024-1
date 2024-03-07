@@ -4,15 +4,16 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
-import io.github.henriquemcc.computacaografica.trabalhopratico.visao.janela.Janela
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.Janela
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import javax.swing.JFrame
 
-val janela = Janela()
-val controladorGrafico = ControladorGrafico(janela)
+val controladorGrafico = ControladorGrafico()
+val janela = Janela(controladorGrafico)
 
 fun main()
 {
+	controladorGrafico.janela = janela
 	janela.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
 	janela.size = obterResolucaoTela()
 	janela.extendedState = JFrame.MAXIMIZED_BOTH
