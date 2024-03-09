@@ -51,6 +51,11 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 			{
 				x = x?.times(-1)
 			}
+			Reflexao.TipoReflexao.EM_RELACAO_EIXO_XY ->
+			{
+				x = x?.times(-1)
+				y = y?.times(-1)
+			}
 
 			null -> {}
 		}

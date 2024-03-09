@@ -12,6 +12,7 @@ class JanelaReflexao(private val controladorGrafico: ControladorGrafico): JFrame
 {
 	private val jRadioButtonEmRelacaoAoEixoX = JRadioButton("Em relação ao eixo X")
 	private val jRadioButtonEmRelacaoAoEixoY = JRadioButton("Em relação ao eixo Y")
+	private val jRadioButtonEmRelacaoAoEixoXY = JRadioButton("Em relação ao eixo XY")
 	private val jButtonOk = JButton("OK")
 	private val buttonGroup = ButtonGroup()
 
@@ -26,22 +27,25 @@ class JanelaReflexao(private val controladorGrafico: ControladorGrafico): JFrame
 			val reflexao = Reflexao()
 			reflexao.tipoReflexao = if (jRadioButtonEmRelacaoAoEixoX.isSelected) Reflexao.TipoReflexao.EM_RELACAO_EIXO_X
 									else if (jRadioButtonEmRelacaoAoEixoY.isSelected) Reflexao.TipoReflexao.EM_RELACAO_EIXO_Y
+									else if (jRadioButtonEmRelacaoAoEixoXY.isSelected) Reflexao.TipoReflexao.EM_RELACAO_EIXO_XY
 									else null
 			controladorGrafico.aplicarReflexao(reflexao)
 			dispose()
 		}
 
 		// Configurando o layout
-		layout = GridLayout(3,1)
+		layout = GridLayout(4,1)
 
 		// Adicionando mnemônicos
 		jRadioButtonEmRelacaoAoEixoX.setMnemonic('X')
 		jRadioButtonEmRelacaoAoEixoY.setMnemonic('Y')
+		jRadioButtonEmRelacaoAoEixoXY.setMnemonic('I')
 		jButtonOk.setMnemonic('O')
 
 		// Adicionando botões ao JFrame
 		add(jRadioButtonEmRelacaoAoEixoX)
 		add(jRadioButtonEmRelacaoAoEixoY)
+		add(jRadioButtonEmRelacaoAoEixoXY)
 		add(jButtonOk)
 	}
 }
