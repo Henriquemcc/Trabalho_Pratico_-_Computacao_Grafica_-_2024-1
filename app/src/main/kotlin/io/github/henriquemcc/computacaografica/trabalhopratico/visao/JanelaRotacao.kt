@@ -9,7 +9,7 @@ import javax.swing.JTextField
 
 class JanelaRotacao(private val controladorGrafico: ControladorGrafico): JFrame("Rotação")
 {
-	private val jTextFieldAngulo = JTextField("Ângulo")
+	private val jTextFieldAngulo = HintJTextField("Ângulo")
 	private val jButtonOk = JButton("OK")
 
 	init

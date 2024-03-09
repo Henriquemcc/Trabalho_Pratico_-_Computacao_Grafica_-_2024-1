@@ -9,8 +9,8 @@ import javax.swing.JTextField
 
 class JanelaTranslacao(private val controladorGrafico: ControladorGrafico): JFrame("Translação")
 {
-	private val jTextFieldDeslocamentoX = JTextField("Deslocamento X")
-	private val jTextFieldDeslocamentoY = JTextField("Deslocamento Y")
+	private val jTextFieldDeslocamentoX = HintJTextField("Deslocamento X")
+	private val jTextFieldDeslocamentoY = HintJTextField("Deslocamento Y")
 	private val jButtonOk = JButton("OK")
 
 	init
