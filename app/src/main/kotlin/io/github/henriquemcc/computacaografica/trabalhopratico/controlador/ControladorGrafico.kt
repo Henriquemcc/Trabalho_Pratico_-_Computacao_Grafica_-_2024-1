@@ -68,6 +68,11 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		janelaReflexao.pack()
 	}
 
+	fun ativarBotaoPonto()
+	{
+		elementoGraficoSelecionado = Ponto()
+	}
+
 	private fun cliqueReta(event: MouseEvent)
 	{
 		if ((elementoGraficoSelecionado as Reta).p1 == null)
@@ -102,6 +107,18 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		{
 			is Reta -> cliqueReta(event)
 			is Circunferencia -> cliqueCircunferencia(event)
+			is Ponto -> cliquePonto(event)
+		}
+	}
+
+	private fun cliquePonto(event: MouseEvent)
+	{
+		if ((elementoGraficoSelecionado as Ponto).x == null || (elementoGraficoSelecionado as Ponto).y == null)
+		{
+			(elementoGraficoSelecionado as Ponto).x = event.x
+			(elementoGraficoSelecionado as Ponto).y = event.y
+			areaDesenho.elementosGraficos.add(elementoGraficoSelecionado as Ponto)
+			areaDesenho.repaint()
 		}
 	}
 

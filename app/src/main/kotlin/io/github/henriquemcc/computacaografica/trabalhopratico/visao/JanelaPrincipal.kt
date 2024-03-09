@@ -22,6 +22,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 	private val barraFerramentas = object : JPanel()
 	{
 		// Botões de elementos gráficos
+		val botaoPonto = JButton("Ponto")
 		val botaoReta = JButton("Reta")
 		val botaoCircunferencia = JButton("Circunferência")
 
@@ -46,6 +47,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 					botaoCircunferencia -> controladorGrafico.ativarObtencaoCircunferencia()
 					botaoRegioesCodificadas -> TODO("Not yet implemented")
 					botaoEquacaoParametrica -> TODO("Not yet implemented")
+					botaoPonto -> controladorGrafico.ativarBotaoPonto()
 				}
 			}
 		}
@@ -55,6 +57,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			layout = BoxLayout(this, BoxLayout.Y_AXIS)
 
 			// Adicionando o ButtonHandler aos botoes
+			botaoPonto.addActionListener(buttonHandler)
 			botaoReta.addActionListener(buttonHandler)
 			botaoCircunferencia.addActionListener(buttonHandler)
 			botaoTranslacao.addActionListener(buttonHandler)
@@ -65,6 +68,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			botaoEquacaoParametrica.addActionListener(buttonHandler)
 
 			// Adicionando mnemônicos ao botões
+			botaoPonto.setMnemonic('P')
 			botaoReta.setMnemonic('R')
 			botaoCircunferencia.setMnemonic('C')
 			botaoRotacao.setMnemonic('O')
@@ -75,6 +79,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			botaoEquacaoParametrica.setMnemonic('Q')
 
 			// Adicionando botões
+			add(botaoPonto)
 			add(botaoReta)
 			add(botaoCircunferencia)
 			add(botaoTranslacao)
@@ -140,8 +145,14 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 					is Reta -> if (elementoGrafico.algoritmoReta == AlgoritmoReta.DDA) dda(g, elementoGrafico.p1, elementoGrafico.p2)
 								else if (elementoGrafico.algoritmoReta == AlgoritmoReta.Bresenham) bresenhamReta(g, elementoGrafico.p1, elementoGrafico.p2)
 					is Circunferencia -> bresenhamCircunferencia(g, elementoGrafico.centro, elementoGrafico.raio)
+					is Ponto -> ponto(g, elementoGrafico)
 				}
 			}
+		}
+
+		private fun ponto(g: Graphics?, p: Ponto) {
+			if (p.x != null && p.y != null)
+				g?.drawOval(p.x!!, p.y!!, 1, 1)
 		}
 
 		private fun dda(g: Graphics?, p1: Ponto?, p2: Ponto?)
