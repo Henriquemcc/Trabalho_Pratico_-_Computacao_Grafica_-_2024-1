@@ -8,12 +8,10 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.visao.Janela
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import javax.swing.JFrame
 
-val controladorGrafico = ControladorGrafico()
-val janela = Janela(controladorGrafico)
+val janela = Janela()
 
 fun main()
 {
-	controladorGrafico.janela = janela
 	janela.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
 	janela.size = obterResolucaoTela()
 	janela.extendedState = JFrame.MAXIMIZED_BOTH

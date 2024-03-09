@@ -8,8 +8,9 @@ import java.awt.Graphics
 import java.awt.event.*
 import javax.swing.*
 
-class Janela(private val controladorGrafico: ControladorGrafico) : JFrame("Trabalho Prático - Computação Gráfica")
+class Janela() : JFrame("Trabalho Prático - Computação Gráfica")
 {
+	private val controladorGrafico = ControladorGrafico()
 	private val areaDesenho = object : JPanel()
 	{
 		val pontos = mutableListOf<Ponto>()
@@ -143,6 +144,10 @@ class Janela(private val controladorGrafico: ControladorGrafico) : JFrame("Traba
 	}
 
 	init {
+
+		// Passando esta instância de janela do controlador gráfico
+		controladorGrafico.janela = this
+
 		// Área de desenho
 		areaDesenho.background = Color.WHITE
 
