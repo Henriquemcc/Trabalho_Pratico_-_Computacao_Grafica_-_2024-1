@@ -11,65 +11,8 @@ import javax.swing.*
 class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 {
 	private val controladorGrafico = ControladorGrafico()
-	private val areaDesenho = object : JPanel()
-	{
-		val pontos = mutableListOf<Ponto>()
-		val mouseHandler = object : MouseListener, MouseMotionListener
-		{
-			override fun mouseClicked(p0: MouseEvent?)
-			{
-				if (p0 != null) controladorGrafico.clique(p0)
-				TODO("Not yet implemented")
-			}
+	private val areaDesenho = AreaDesenho()
 
-			override fun mousePressed(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-			override fun mouseReleased(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-			override fun mouseEntered(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-			override fun mouseExited(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-			override fun mouseDragged(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-			override fun mouseMoved(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-		}
-
-		init
-		{
-			addMouseListener(mouseHandler)
-		}
-
-		override fun paintComponent(g: Graphics?)
-		{
-			super.paintComponent(g)
-
-			// Adicionando pontos
-			for(ponto in pontos){
-				g?.fillOval(ponto.x, ponto.y, 1, 1)
-			}
-		}
-
-	}
 	private val barraFerramentas = object : JPanel()
 	{
 		val botaoTranslacao = JButton("Translação")
@@ -156,5 +99,67 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 		add(barraStatus, BorderLayout.SOUTH)
 		add(barraFerramentas, BorderLayout.WEST)
 		jMenuBar = barraMenu
+	}
+
+	inner class AreaDesenho: JPanel()
+	{
+		val pontos = mutableListOf<Ponto>()
+		val mouseHandler = MouseHandler()
+
+		init
+		{
+			addMouseListener(mouseHandler)
+		}
+
+		override fun paintComponent(g: Graphics?)
+		{
+			super.paintComponent(g)
+
+			// Adicionando pontos
+			for(ponto in pontos){
+				g?.fillOval(ponto.x, ponto.y, 1, 1)
+			}
+		}
+
+		inner class MouseHandler : MouseListener, MouseMotionListener
+		{
+			override fun mouseClicked(p0: MouseEvent?)
+			{
+				if (p0 != null) controladorGrafico.clique(p0)
+				TODO("Not yet implemented")
+			}
+
+			override fun mousePressed(p0: MouseEvent?)
+			{
+				TODO("Not yet implemented")
+			}
+
+			override fun mouseReleased(p0: MouseEvent?)
+			{
+				TODO("Not yet implemented")
+			}
+
+			override fun mouseEntered(p0: MouseEvent?)
+			{
+				TODO("Not yet implemented")
+			}
+
+			override fun mouseExited(p0: MouseEvent?)
+			{
+				TODO("Not yet implemented")
+			}
+
+			override fun mouseDragged(p0: MouseEvent?)
+			{
+				TODO("Not yet implemented")
+			}
+
+			override fun mouseMoved(p0: MouseEvent?)
+			{
+				TODO("Not yet implemented")
+			}
+
+		}
+
 	}
 }
