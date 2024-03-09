@@ -1,14 +1,14 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 
-import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.OperacaoReta
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.AlgoritmoReta
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Reta
 import java.awt.GridLayout
 import javax.swing.ButtonGroup
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JRadioButton
 
-class JanelaAlgoritmoReta(operacaoReta: OperacaoReta): JFrame("Algoritmo da Reta")
+class JanelaAlgoritmoReta(private val reta: Reta): JFrame( "Algoritmo da Reta")
 {
 	private val jRadioButtonDda = JRadioButton("DDA")
 	private val jRadioButtonBresenham = JRadioButton("Bresenham")
@@ -23,7 +23,7 @@ class JanelaAlgoritmoReta(operacaoReta: OperacaoReta): JFrame("Algoritmo da Reta
 
 		// Adicionando listener no botão OK
 		jButtonOk.addActionListener {
-			operacaoReta.algoritmoReta = if (jRadioButtonDda.isSelected) AlgoritmoReta.DDA
+			reta.algoritmoReta = if (jRadioButtonDda.isSelected) AlgoritmoReta.DDA
 			else if (jRadioButtonBresenham.isSelected) AlgoritmoReta.Bresenham
 			else null
 			dispose()

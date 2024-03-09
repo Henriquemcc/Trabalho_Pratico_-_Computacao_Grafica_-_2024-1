@@ -1,6 +1,3 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.modelo
 
-class Reta(p1: Ponto, p2: Ponto) : ElementoGrafico()
-{
-
-}
+class Reta(var p1: Ponto? = null, var p2: Ponto? = null, var algoritmoReta: AlgoritmoReta? = null) : ElementoGrafico()

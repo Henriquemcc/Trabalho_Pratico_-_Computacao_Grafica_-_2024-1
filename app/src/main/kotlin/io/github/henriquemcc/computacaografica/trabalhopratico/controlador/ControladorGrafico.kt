@@ -1,89 +1,43 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.ElementoGrafico
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Reta
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaAlgoritmoReta
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaPrincipal
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import java.awt.event.MouseEvent
-import javax.swing.JFrame
 
-class ControladorGrafico()
+class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 {
-	var janela: JFrame? = null
+	private var elementoGraficoSelecionado: ElementoGrafico? = null
 
-	private var operacaoGrafica: OperacaoGrafica? = null
-
-
-	/* Funções executadas pelo ButtonHandler: */
 	fun ativarObtencaoReta()
 	{
-		operacaoGrafica = OperacaoReta()
-		val janelaAlgoritmoReta = JanelaAlgoritmoReta(operacaoGrafica as OperacaoReta)
+		elementoGraficoSelecionado = Reta()
+		val janelaAlgoritmoReta = JanelaAlgoritmoReta(elementoGraficoSelecionado as Reta)
 		janelaAlgoritmoReta.isVisible = true
 		janelaAlgoritmoReta.size = obterResolucaoTela()
 	}
 
-	fun ativarObtencaoCircunferencia()
-	{
-		operacaoGrafica = OperacaoCircunferencia()
+	private fun cliqueReta(event: MouseEvent) {
+		if ((elementoGraficoSelecionado as Reta).p1 == null){
+			(elementoGraficoSelecionado as Reta).p1 = Ponto(event.x, event.y)
+		}
+		else if ((elementoGraficoSelecionado as Reta).p2 == null){
+			(elementoGraficoSelecionado as Reta).p2 = Ponto(event.x, event.y)
+			areaDesenho.elementosGraficos.add(elementoGraficoSelecionado as Reta)
+			areaDesenho.repaint()
+			elementoGraficoSelecionado = null
+		}
 	}
-
-	fun ativarObtencaoTranslacao()
-	{
-		TODO("Not yet implemented")
-	}
-
-	fun ativarObtencaoRotacao()
-	{
-		TODO("Not yet implemented")
-	}
-
-	fun ativarObtencaoEscala()
-	{
-		TODO("Not yet implemented")
-	}
-
-	fun ativarObtencaoReflexao()
-	{
-		TODO("Not yet implemented")
-	}
-
-	fun ativarObtencaoRegioesCodificadas()
-	{
-		TODO("Not yet implemented")
-	}
-
-	fun ativarObtencaoEquacaoParametrica()
-	{
-		TODO("Not yet implemented")
-	}
-
-	/* Funções executadas pelo MouseHandler*/
 
 	fun clique(event: MouseEvent)
 	{
-		when (operacaoGrafica)
+		println("Clique em ${event.x}, ${event.y}")
+		when (elementoGraficoSelecionado)
 		{
-			is OperacaoReta -> tratarCliqueOperacaoReta(event)
-			is OperacaoCircunferencia -> tratarCliqueOperacaoCircunferencia(event)
-
+			is Reta -> cliqueReta(event)
 		}
 	}
-
-	private fun tratarCliqueOperacaoCircunferencia(event: MouseEvent)
-	{
-
-	}
-
-	private fun tratarCliqueOperacaoReta(event: MouseEvent)
-	{
-		if ((operacaoGrafica as OperacaoReta).pontoInicial == null)
-		{
-			(operacaoGrafica as OperacaoReta).pontoInicial = Ponto(event.x, event.y)
-		}
-		else if ((operacaoGrafica as OperacaoReta).pontoFinal == null)
-		{
-			(operacaoGrafica as OperacaoReta).pontoFinal = Ponto(event.x, event.y)
-		}
-	}
-
 }

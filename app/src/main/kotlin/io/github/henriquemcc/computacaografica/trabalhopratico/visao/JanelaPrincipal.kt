@@ -1,17 +1,22 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.AlgoritmoReta
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.ElementoGrafico
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Reta
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.Graphics
 import java.awt.event.*
 import javax.swing.*
+import kotlin.math.abs
+import kotlin.math.round
 
 class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 {
-	private val controladorGrafico = ControladorGrafico()
 	private val areaDesenho = AreaDesenho()
+	private val controladorGrafico = ControladorGrafico(areaDesenho)
 
 	private val barraFerramentas = object : JPanel()
 	{
@@ -28,14 +33,14 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			{
 				when (p0.source)
 				{
-					botaoTranslacao -> controladorGrafico.ativarObtencaoTranslacao()
-					botaoRotacao -> controladorGrafico.ativarObtencaoRotacao()
-					botaoEscala -> controladorGrafico.ativarObtencaoEscala()
-					botaoReflexao -> controladorGrafico.ativarObtencaoReflexao()
+					botaoTranslacao -> TODO("Not yet implemented")
+					botaoRotacao -> TODO("Not yet implemented")
+					botaoEscala -> TODO("Not yet implemented")
+					botaoReflexao -> TODO("Not yet implemented")
 					botaoReta -> controladorGrafico.ativarObtencaoReta()
-					botaoCircunferencia -> controladorGrafico.ativarObtencaoCircunferencia()
-					botaoRegioesCodificadas -> controladorGrafico.ativarObtencaoRegioesCodificadas()
-					botaoEquacaoParametrica -> controladorGrafico.ativarObtencaoEquacaoParametrica()
+					botaoCircunferencia -> TODO("Not yet implemented")
+					botaoRegioesCodificadas -> TODO("Not yet implemented")
+					botaoEquacaoParametrica -> TODO("Not yet implemented")
 				}
 			}
 		}
@@ -87,10 +92,6 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 	}
 
 	init {
-
-		// Passando esta instância de janela do controlador gráfico
-		controladorGrafico.janela = this
-
 		// Área de desenho
 		areaDesenho.background = Color.WHITE
 
@@ -103,8 +104,8 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 
 	inner class AreaDesenho: JPanel()
 	{
-		val pontos = mutableListOf<Ponto>()
-		val mouseHandler = MouseHandler()
+		private val mouseHandler = MouseHandler()
+		val elementosGraficos = mutableSetOf<ElementoGrafico>()
 
 		init
 		{
@@ -114,51 +115,50 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 		override fun paintComponent(g: Graphics?)
 		{
 			super.paintComponent(g)
-
-			// Adicionando pontos
-			for(ponto in pontos){
-				g?.fillOval(ponto.x, ponto.y, 1, 1)
+			for (elementoGrafico in elementosGraficos)
+			{
+				when(elementoGrafico)
+				{
+					is Reta -> if (elementoGrafico.algoritmoReta == AlgoritmoReta.DDA) dda(g, elementoGrafico.p1, elementoGrafico.p2)
+								else if (elementoGrafico.algoritmoReta == AlgoritmoReta.Bresenham) TODO("Not yet implemented")
+				}
 			}
 		}
 
-		inner class MouseHandler : MouseListener, MouseMotionListener
+		private fun dda(g: Graphics?, p1: Ponto?, p2: Ponto?)
 		{
-			override fun mouseClicked(p0: MouseEvent?)
-			{
-				if (p0 != null) controladorGrafico.clique(p0)
-				TODO("Not yet implemented")
-			}
+			if (g != null && p1 != null && p2 != null && p1.x != null && p1.y != null && p2.x != null && p2.y != null)
+				dda(g, p1.x!!, p1.y!!, p2.x!!, p2.y!!)
+		}
 
-			override fun mousePressed(p0: MouseEvent?)
+		private fun dda(g: Graphics, x1: Int, y1: Int, x2: Int, y2: Int)
+		{
+			val dx: Int = x2 - x1
+			val dy: Int = y2 - y1
+			val passos: Int = if (abs(dx) > abs(dy)) abs(dx) else abs(dy)
+			val xIncr: Double = (dx / passos).toDouble()
+			val yIncr: Double = (dy / passos).toDouble()
+			var x: Double = x1.toDouble()
+			var y: Double = y1.toDouble()
+			g.drawOval(round(x).toInt(), round(y).toInt(), 1, 1)// set_pixel(round(x), round(y))
+			for (k in 1 .. passos)
 			{
-				TODO("Not yet implemented")
+				x += xIncr
+				y += yIncr
+				g.drawOval(round(x).toInt(), round(y).toInt(), 1, 1)// set_pixel(round(x), round(y))
 			}
+		}
 
-			override fun mouseReleased(p0: MouseEvent?)
+		inner class MouseHandler : MouseAdapter()
+		{
+			override fun mouseClicked(event: MouseEvent?)
 			{
-				TODO("Not yet implemented")
+				if (event != null)
+				{
+					controladorGrafico.clique(event)
+				}
+				super.mouseClicked(event)
 			}
-
-			override fun mouseEntered(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-			override fun mouseExited(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-			override fun mouseDragged(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
-			override fun mouseMoved(p0: MouseEvent?)
-			{
-				TODO("Not yet implemented")
-			}
-
 		}
 
 	}
