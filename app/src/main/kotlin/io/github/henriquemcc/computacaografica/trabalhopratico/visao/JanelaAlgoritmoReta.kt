@@ -1,14 +1,14 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.AlgoritmoReta
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Reta
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Reta
 import java.awt.GridLayout
 import javax.swing.ButtonGroup
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JRadioButton
 
-class JanelaAlgoritmoReta(private val reta: Reta): JFrame( "Algoritmo da Reta")
+class JanelaAlgoritmoReta(private val reta: Reta): JFrame("Algoritmo da Reta")
 {
 	private val jRadioButtonDda = JRadioButton("DDA")
 	private val jRadioButtonBresenham = JRadioButton("Bresenham")

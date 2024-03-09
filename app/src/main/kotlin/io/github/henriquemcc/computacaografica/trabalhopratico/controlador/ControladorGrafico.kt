@@ -1,6 +1,12 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.*
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Circunferencia
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.ElementoGrafico
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Ponto
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Reta
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Escala
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.*
 import java.awt.event.MouseEvent
 import kotlin.math.*

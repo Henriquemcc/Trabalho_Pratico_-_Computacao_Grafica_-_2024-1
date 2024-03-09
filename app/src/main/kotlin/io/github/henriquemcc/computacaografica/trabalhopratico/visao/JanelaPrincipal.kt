@@ -2,6 +2,10 @@ package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.*
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Circunferencia
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.ElementoGrafico
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Ponto
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Reta
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.Graphics

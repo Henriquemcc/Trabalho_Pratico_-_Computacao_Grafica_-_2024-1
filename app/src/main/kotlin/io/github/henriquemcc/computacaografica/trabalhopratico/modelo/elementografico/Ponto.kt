@@ -1,5 +1,9 @@
-package io.github.henriquemcc.computacaografica.trabalhopratico.modelo
+package io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico
 
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Escala
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Reflexao
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
 import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin

@@ -1,8 +1,7 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Escala
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Translacao
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Escala
 import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
