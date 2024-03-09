@@ -9,4 +9,11 @@ abstract class ElementoGrafico : Comparable<ElementoGrafico>
 		return id.compareTo(other.id)
 	}
 
+	abstract fun rotacao(rotacao: Rotacao)
+
+	abstract fun escala(escala: Escala)
+
+	abstract fun translacao(translacao: Translacao)
+
+	abstract fun reflexao(reflexao: Reflexao)
 }

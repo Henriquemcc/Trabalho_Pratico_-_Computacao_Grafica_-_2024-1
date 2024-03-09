@@ -3,9 +3,7 @@ package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.*
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.*
 import java.awt.event.MouseEvent
-import kotlin.math.pow
-import kotlin.math.roundToInt
-import kotlin.math.sqrt
+import kotlin.math.*
 
 class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 {
@@ -38,29 +36,20 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		janelaEscala.size = obterResolucaoTela()
 	}
 
+	fun ativarObtencaoRotacao()
+	{
+		val janelaRotacao = JanelaRotacao(this)
+		janelaRotacao.isVisible = true
+		janelaRotacao.size = obterResolucaoTela()
+	}
+
 	fun aplicarTranslacao(translacao: Translacao)
 	{
 		println("Aplicar translação")
 		if (translacao.x != null && translacao.y != null)
 		{
 			for (elementoGrafico in areaDesenho.elementosGraficos)
-			{
-				when (elementoGrafico)
-				{
-					is Reta ->
-					{
-						elementoGrafico.p1?.x = elementoGrafico.p1?.x?.plus(translacao.x!!)
-						elementoGrafico.p1?.y = elementoGrafico.p1?.y?.plus(translacao.y!!)
-						elementoGrafico.p2?.x = elementoGrafico.p2?.x?.plus(translacao.x!!)
-						elementoGrafico.p2?.y = elementoGrafico.p2?.y?.plus(translacao.y!!)
-					}
-					is Circunferencia ->
-					{
-						elementoGrafico.centro?.x = elementoGrafico.centro?.x?.plus(translacao.x!!)
-						elementoGrafico.centro?.y = elementoGrafico.centro?.y?.plus(translacao.y!!)
-					}
-				}
-			}
+				elementoGrafico.translacao(translacao)
 			areaDesenho.repaint()
 		}
 	}
@@ -110,23 +99,18 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		if (escala.x != null && escala.y != null)
 		{
 			for (elementoGrafico in areaDesenho.elementosGraficos)
-			{
-				when (elementoGrafico)
-				{
-					is Reta ->
-					{
-						elementoGrafico.p1?.x = elementoGrafico.p1?.x?.toDouble()?.times(escala.x!!)?.roundToInt()
-						elementoGrafico.p1?.y = elementoGrafico.p1?.y?.toDouble()?.times(escala.y!!)?.roundToInt()
-						elementoGrafico.p2?.x = elementoGrafico.p2?.x?.toDouble()?.times(escala.x!!)?.roundToInt()
-						elementoGrafico.p2?.y = elementoGrafico.p2?.y?.toDouble()?.times(escala.y!!)?.roundToInt()
-					}
-					is Circunferencia ->
-					{
-						elementoGrafico.centro?.x = elementoGrafico.centro?.x?.toDouble()?.times(escala.x!!)?.roundToInt()
-						elementoGrafico.centro?.y = elementoGrafico.centro?.y?.toDouble()?.times(escala.y!!)?.roundToInt()
-					}
-				}
-			}
+				elementoGrafico.escala(escala)
+			areaDesenho.repaint()
+		}
+	}
+
+	fun aplicarRotacao(rotacao: Rotacao)
+	{
+		println("Aplicar Rotação")
+		if (rotacao.angulo != null)
+		{
+			for (elementoGrafico in areaDesenho.elementosGraficos)
+				elementoGrafico.rotacao(rotacao)
 			areaDesenho.repaint()
 		}
 	}

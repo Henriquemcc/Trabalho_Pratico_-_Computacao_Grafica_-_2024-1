@@ -31,7 +31,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 				when (p0.source)
 				{
 					botaoTranslacao -> controladorGrafico.ativarObtencaoTranslacao()
-					botaoRotacao -> TODO("Not yet implemented")
+					botaoRotacao -> controladorGrafico.ativarObtencaoRotacao()
 					botaoEscala -> controladorGrafico.ativarObtencaoEscala()
 					botaoReflexao -> TODO("Not yet implemented")
 					botaoReta -> controladorGrafico.ativarObtencaoReta()
