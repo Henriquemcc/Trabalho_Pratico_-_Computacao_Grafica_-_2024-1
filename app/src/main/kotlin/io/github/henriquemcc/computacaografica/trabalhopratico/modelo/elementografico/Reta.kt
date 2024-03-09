@@ -28,6 +28,7 @@ class Reta(var p1: Ponto? = null, var p2: Ponto? = null, var algoritmoReta: Algo
 
 	override fun reflexao(reflexao: Reflexao)
 	{
-		TODO("Not yet implemented")
+		p1?.reflexao(reflexao)
+		p2?.reflexao(reflexao)
 	}
 }

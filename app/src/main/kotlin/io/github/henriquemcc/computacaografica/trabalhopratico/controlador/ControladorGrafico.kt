@@ -5,6 +5,7 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementogr
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Ponto
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Reta
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Escala
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Reflexao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.*
@@ -58,6 +59,13 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 				elementoGrafico.translacao(translacao)
 			areaDesenho.repaint()
 		}
+	}
+
+	fun ativarReflexao()
+	{
+		val janelaReflexao = JanelaReflexao(this)
+		janelaReflexao.isVisible = true
+		janelaReflexao.pack()
 	}
 
 	private fun cliqueReta(event: MouseEvent)
@@ -117,6 +125,17 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		{
 			for (elementoGrafico in areaDesenho.elementosGraficos)
 				elementoGrafico.rotacao(rotacao)
+			areaDesenho.repaint()
+		}
+	}
+
+	fun aplicarReflexao(reflexao: Reflexao)
+	{
+		println("Aplicar Reflexão")
+		if (reflexao.tipoReflexao != null)
+		{
+			for (elementoGrafico in areaDesenho.elementosGraficos)
+				elementoGrafico.reflexao(reflexao)
 			areaDesenho.repaint()
 		}
 	}

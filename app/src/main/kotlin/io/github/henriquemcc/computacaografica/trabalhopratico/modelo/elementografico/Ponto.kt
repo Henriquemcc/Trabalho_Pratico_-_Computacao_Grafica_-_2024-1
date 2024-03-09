@@ -41,6 +41,18 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 
 	override fun reflexao(reflexao: Reflexao)
 	{
-		TODO("Not yet implemented")
+		when(reflexao.tipoReflexao)
+		{
+			Reflexao.TipoReflexao.EM_RELACAO_EIXO_X ->
+			{
+				y = y?.times(-1)
+			}
+			Reflexao.TipoReflexao.EM_RELACAO_EIXO_Y ->
+			{
+				x = x?.times(-1)
+			}
+
+			null -> {}
+		}
 	}
 }

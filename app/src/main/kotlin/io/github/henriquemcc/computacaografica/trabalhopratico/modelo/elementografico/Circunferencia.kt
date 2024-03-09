@@ -24,6 +24,6 @@ class Circunferencia(var centro: Ponto? = null, var raio: Int? = null) : Element
 
 	override fun reflexao(reflexao: Reflexao)
 	{
-		TODO("Not yet implemented")
+		centro?.reflexao(reflexao)
 	}
 }
