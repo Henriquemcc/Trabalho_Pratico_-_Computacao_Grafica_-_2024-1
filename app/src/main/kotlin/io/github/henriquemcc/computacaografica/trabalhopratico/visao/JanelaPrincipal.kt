@@ -21,14 +21,18 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 
 	private val barraFerramentas = object : JPanel()
 	{
+		// Botões de elementos gráficos
+		val botaoReta = JButton("Reta")
+		val botaoCircunferencia = JButton("Circunferência")
+
+		// Botões de operações gráficas
 		val botaoTranslacao = JButton("Translação")
 		val botaoRotacao = JButton("Rotação")
 		val botaoEscala = JButton("Escala")
 		val botaoReflexao = JButton("Reflexão")
-		val botaoReta = JButton("Reta")
-		val botaoCircunferencia = JButton("Circunferência")
 		val botaoRegioesCodificadas = JButton("Regiões Codificadas")
 		val botaoEquacaoParametrica = JButton("Equação Paramétrica")
+
 		val buttonHandler = ActionListener { p0 ->
 			if (p0 != null)
 			{
@@ -51,32 +55,32 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			layout = BoxLayout(this, BoxLayout.Y_AXIS)
 
 			// Adicionando o ButtonHandler aos botoes
+			botaoReta.addActionListener(buttonHandler)
+			botaoCircunferencia.addActionListener(buttonHandler)
 			botaoTranslacao.addActionListener(buttonHandler)
 			botaoRotacao.addActionListener(buttonHandler)
 			botaoEscala.addActionListener(buttonHandler)
 			botaoReflexao.addActionListener(buttonHandler)
-			botaoReta.addActionListener(buttonHandler)
-			botaoCircunferencia.addActionListener(buttonHandler)
 			botaoRegioesCodificadas.addActionListener(buttonHandler)
 			botaoEquacaoParametrica.addActionListener(buttonHandler)
 
 			// Adicionando mnemônicos ao botões
-			botaoTranslacao.setMnemonic('T')
-			botaoRotacao.setMnemonic('O')
-			botaoEscala.setMnemonic('E')
-			botaoReflexao.setMnemonic('F')
 			botaoReta.setMnemonic('R')
 			botaoCircunferencia.setMnemonic('C')
+			botaoRotacao.setMnemonic('O')
+			botaoTranslacao.setMnemonic('T')
+			botaoEscala.setMnemonic('E')
+			botaoReflexao.setMnemonic('F')
 			botaoRegioesCodificadas.setMnemonic('G')
 			botaoEquacaoParametrica.setMnemonic('Q')
 
 			// Adicionando botões
+			add(botaoReta)
+			add(botaoCircunferencia)
 			add(botaoTranslacao)
 			add(botaoRotacao)
 			add(botaoEscala)
 			add(botaoReflexao)
-			add(botaoReta)
-			add(botaoCircunferencia)
 			add(botaoRegioesCodificadas)
 			add(botaoEquacaoParametrica)
 		}
