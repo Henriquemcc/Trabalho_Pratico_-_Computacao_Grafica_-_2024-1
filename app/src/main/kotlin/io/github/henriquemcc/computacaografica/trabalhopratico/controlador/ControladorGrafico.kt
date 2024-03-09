@@ -1,12 +1,10 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.*
-import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaAlgoritmoReta
-import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaPrincipal
-import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaTranslacao
-import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.*
 import java.awt.event.MouseEvent
 import kotlin.math.pow
+import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
@@ -31,6 +29,13 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		val janelaTranslacao = JanelaTranslacao(this)
 		janelaTranslacao.isVisible = true
 		janelaTranslacao.size = obterResolucaoTela()
+	}
+
+	fun ativarObtencaoEscala()
+	{
+		val janelaEscala = JanelaEscala(this)
+		janelaEscala.isVisible = true
+		janelaEscala.size = obterResolucaoTela()
 	}
 
 	fun aplicarTranslacao(translacao: Translacao)
@@ -96,6 +101,33 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		{
 			is Reta -> cliqueReta(event)
 			is Circunferencia -> cliqueCircunferencia(event)
+		}
+	}
+
+	fun aplicarEscala(escala: Escala)
+	{
+		println("Aplicar Escala")
+		if (escala.x != null && escala.y != null)
+		{
+			for (elementoGrafico in areaDesenho.elementosGraficos)
+			{
+				when (elementoGrafico)
+				{
+					is Reta ->
+					{
+						elementoGrafico.p1?.x = elementoGrafico.p1?.x?.toDouble()?.times(escala.x!!)?.roundToInt()
+						elementoGrafico.p1?.y = elementoGrafico.p1?.y?.toDouble()?.times(escala.y!!)?.roundToInt()
+						elementoGrafico.p2?.x = elementoGrafico.p2?.x?.toDouble()?.times(escala.x!!)?.roundToInt()
+						elementoGrafico.p2?.y = elementoGrafico.p2?.y?.toDouble()?.times(escala.y!!)?.roundToInt()
+					}
+					is Circunferencia ->
+					{
+						elementoGrafico.centro?.x = elementoGrafico.centro?.x?.toDouble()?.times(escala.x!!)?.roundToInt()
+						elementoGrafico.centro?.y = elementoGrafico.centro?.y?.toDouble()?.times(escala.y!!)?.roundToInt()
+					}
+				}
+			}
+			areaDesenho.repaint()
 		}
 	}
 }

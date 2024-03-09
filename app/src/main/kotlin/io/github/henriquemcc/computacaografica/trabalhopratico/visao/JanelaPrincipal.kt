@@ -32,7 +32,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 				{
 					botaoTranslacao -> controladorGrafico.ativarObtencaoTranslacao()
 					botaoRotacao -> TODO("Not yet implemented")
-					botaoEscala -> TODO("Not yet implemented")
+					botaoEscala -> controladorGrafico.ativarObtencaoEscala()
 					botaoReflexao -> TODO("Not yet implemented")
 					botaoReta -> controladorGrafico.ativarObtencaoReta()
 					botaoCircunferencia -> controladorGrafico.ativarObtencaoCircunferencia()
