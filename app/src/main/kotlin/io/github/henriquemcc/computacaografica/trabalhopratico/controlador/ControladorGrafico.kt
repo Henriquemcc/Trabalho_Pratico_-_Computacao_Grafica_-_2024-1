@@ -14,6 +14,7 @@ import kotlin.math.*
 
 class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 {
+	private val elementosGraficos = areaDesenho.elementosGraficos
 	private var elementoGraficoSelecionado: ElementoGrafico? = null
 
 	fun ativarObtencaoReta()
@@ -55,7 +56,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		println("Aplicar translação")
 		if (translacao.x != null && translacao.y != null)
 		{
-			for (elementoGrafico in areaDesenho.elementosGraficos)
+			for (elementoGrafico in elementosGraficos)
 				elementoGrafico.translacao(translacao)
 			areaDesenho.repaint()
 		}
@@ -81,7 +82,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		} else if ((elementoGraficoSelecionado as Reta).p2 == null)
 		{
 			(elementoGraficoSelecionado as Reta).p2 = Ponto(event.x, event.y)
-			areaDesenho.elementosGraficos.add(elementoGraficoSelecionado as Reta)
+			elementosGraficos.add(elementoGraficoSelecionado as Reta)
 			areaDesenho.repaint()
 		}
 	}
@@ -94,7 +95,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		} else if ((elementoGraficoSelecionado as Circunferencia).raio == null)
 		{
 			(elementoGraficoSelecionado as Circunferencia).raio = sqrt((event.x - (elementoGraficoSelecionado as Circunferencia).centro!!.x!!).toDouble().pow(2) + (event.y - (elementoGraficoSelecionado as Circunferencia).centro!!.y!!).toDouble().pow(2)).toInt()
-			areaDesenho.elementosGraficos.add(elementoGraficoSelecionado as Circunferencia)
+			elementosGraficos.add(elementoGraficoSelecionado as Circunferencia)
 			areaDesenho.repaint()
 		}
 
@@ -117,7 +118,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		{
 			(elementoGraficoSelecionado as Ponto).x = event.x
 			(elementoGraficoSelecionado as Ponto).y = event.y
-			areaDesenho.elementosGraficos.add(elementoGraficoSelecionado as Ponto)
+			elementosGraficos.add(elementoGraficoSelecionado as Ponto)
 			areaDesenho.repaint()
 		}
 	}
@@ -127,7 +128,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		println("Aplicar Escala")
 		if (escala.x != null && escala.y != null)
 		{
-			for (elementoGrafico in areaDesenho.elementosGraficos)
+			for (elementoGrafico in elementosGraficos)
 				elementoGrafico.escala(escala)
 			areaDesenho.repaint()
 		}
@@ -138,7 +139,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		println("Aplicar Rotação")
 		if (rotacao.angulo != null)
 		{
-			for (elementoGrafico in areaDesenho.elementosGraficos)
+			for (elementoGrafico in elementosGraficos)
 				elementoGrafico.rotacao(rotacao)
 			areaDesenho.repaint()
 		}
@@ -149,7 +150,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		println("Aplicar Reflexão")
 		if (reflexao.tipoReflexao != null)
 		{
-			for (elementoGrafico in areaDesenho.elementosGraficos)
+			for (elementoGrafico in elementosGraficos)
 				elementoGrafico.reflexao(reflexao)
 			areaDesenho.repaint()
 		}
