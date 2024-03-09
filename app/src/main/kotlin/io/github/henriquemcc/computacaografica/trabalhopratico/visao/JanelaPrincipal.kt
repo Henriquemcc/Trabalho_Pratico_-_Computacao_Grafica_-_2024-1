@@ -136,10 +136,10 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			val dx: Int = x2 - x1
 			val dy: Int = y2 - y1
 			val passos: Int = if (abs(dx) > abs(dy)) abs(dx) else abs(dy)
-			val xIncr: Double = (dx / passos).toDouble()
-			val yIncr: Double = (dy / passos).toDouble()
 			var x: Double = x1.toDouble()
 			var y: Double = y1.toDouble()
+			val xIncr: Double = dx.toDouble() / passos.toDouble()
+			val yIncr: Double = dy.toDouble() / passos.toDouble()
 			g.drawOval(round(x).toInt(), round(y).toInt(), 1, 1)// set_pixel(round(x), round(y))
 			for (k in 1 .. passos)
 			{
