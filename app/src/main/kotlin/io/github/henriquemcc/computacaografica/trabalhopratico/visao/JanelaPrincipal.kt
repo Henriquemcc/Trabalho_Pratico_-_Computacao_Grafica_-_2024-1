@@ -77,14 +77,17 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 	private val barraMenu = object: JMenuBar() {
 		private val menuArquivo = JMenu("Arquivo")
 		private val itemSalvar = JMenuItem("Salvar")
+		private val itemAbrir = JMenuItem("Abrir")
 
 		init
 		{
 			// Configurando mnemônicos
 			menuArquivo.setMnemonic('A')
 			itemSalvar.setMnemonic('S')
+			itemAbrir.setMnemonic('B')
 
 			// Adicionando item no menu
+			menuArquivo.add(itemAbrir)
 			menuArquivo.add(itemSalvar)
 
 			// Adicionando menu
