@@ -20,7 +20,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		elementoGraficoSelecionado = Reta()
 		val janelaAlgoritmoReta = JanelaAlgoritmoReta(elementoGraficoSelecionado as Reta)
 		janelaAlgoritmoReta.isVisible = true
-		janelaAlgoritmoReta.size = obterResolucaoTela()
+		janelaAlgoritmoReta.pack()
 	}
 
 	fun ativarObtencaoCircunferencia()
@@ -32,21 +32,21 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 	{
 		val janelaTranslacao = JanelaTranslacao(this)
 		janelaTranslacao.isVisible = true
-		janelaTranslacao.size = obterResolucaoTela()
+		janelaTranslacao.pack()
 	}
 
 	fun ativarObtencaoEscala()
 	{
 		val janelaEscala = JanelaEscala(this)
 		janelaEscala.isVisible = true
-		janelaEscala.size = obterResolucaoTela()
+		janelaEscala.pack()
 	}
 
 	fun ativarObtencaoRotacao()
 	{
 		val janelaRotacao = JanelaRotacao(this)
 		janelaRotacao.isVisible = true
-		janelaRotacao.size = obterResolucaoTela()
+		janelaRotacao.pack()
 	}
 
 	fun aplicarTranslacao(translacao: Translacao)
