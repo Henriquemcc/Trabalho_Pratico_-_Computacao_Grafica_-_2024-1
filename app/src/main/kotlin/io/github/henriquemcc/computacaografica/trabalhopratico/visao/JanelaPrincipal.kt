@@ -60,6 +60,16 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			botaoRegioesCodificadas.addActionListener(buttonHandler)
 			botaoEquacaoParametrica.addActionListener(buttonHandler)
 
+			// Adicionando mnemônicos ao botões
+			botaoTranslacao.setMnemonic('T')
+			botaoRotacao.setMnemonic('O')
+			botaoEscala.setMnemonic('E')
+			botaoReflexao.setMnemonic('F')
+			botaoReta.setMnemonic('R')
+			botaoCircunferencia.setMnemonic('C')
+			botaoRegioesCodificadas.setMnemonic('G')
+			botaoEquacaoParametrica.setMnemonic('Q')
+
 			// Adicionando botões
 			add(botaoTranslacao)
 			add(botaoRotacao)
