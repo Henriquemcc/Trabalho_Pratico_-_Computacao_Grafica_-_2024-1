@@ -8,7 +8,7 @@ import java.awt.Graphics
 import java.awt.event.*
 import javax.swing.*
 
-class Janela() : JFrame("Trabalho Prático - Computação Gráfica")
+class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 {
 	private val controladorGrafico = ControladorGrafico()
 	private val areaDesenho = object : JPanel()
