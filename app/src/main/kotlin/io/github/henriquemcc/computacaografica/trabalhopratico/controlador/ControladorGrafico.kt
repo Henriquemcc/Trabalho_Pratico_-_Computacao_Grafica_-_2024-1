@@ -1,5 +1,6 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Circunferencia
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.ElementoGrafico
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Reta
@@ -7,6 +8,8 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaAlgor
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaPrincipal
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import java.awt.event.MouseEvent
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 {
@@ -18,6 +21,11 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		val janelaAlgoritmoReta = JanelaAlgoritmoReta(elementoGraficoSelecionado as Reta)
 		janelaAlgoritmoReta.isVisible = true
 		janelaAlgoritmoReta.size = obterResolucaoTela()
+	}
+
+	fun ativarObtencaoCircunferencia()
+	{
+		elementoGraficoSelecionado = Circunferencia()
 	}
 
 	private fun cliqueReta(event: MouseEvent) {
@@ -32,12 +40,26 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		}
 	}
 
+	private fun cliqueCircunferencia(event: MouseEvent)
+	{
+		if ((elementoGraficoSelecionado as Circunferencia).centro == null){
+			(elementoGraficoSelecionado as Circunferencia).centro = Ponto(event.x, event.y)
+		} else if ((elementoGraficoSelecionado as Circunferencia).raio == null){
+			(elementoGraficoSelecionado as Circunferencia).raio = sqrt((event.x - (elementoGraficoSelecionado as Circunferencia).centro!!.x!!).toDouble().pow(2) + (event.y - (elementoGraficoSelecionado as Circunferencia).centro!!.y!!).toDouble().pow(2)).toInt()
+			areaDesenho.elementosGraficos.add(elementoGraficoSelecionado as Circunferencia)
+			areaDesenho.repaint()
+			elementoGraficoSelecionado = null
+		}
+
+	}
+
 	fun clique(event: MouseEvent)
 	{
 		println("Clique em ${event.x}, ${event.y}")
 		when (elementoGraficoSelecionado)
 		{
 			is Reta -> cliqueReta(event)
+			is Circunferencia -> cliqueCircunferencia(event)
 		}
 	}
 }

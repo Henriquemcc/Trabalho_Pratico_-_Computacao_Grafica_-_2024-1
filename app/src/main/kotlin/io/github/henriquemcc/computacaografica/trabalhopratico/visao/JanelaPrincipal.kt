@@ -1,10 +1,7 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.AlgoritmoReta
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.ElementoGrafico
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Reta
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.*
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.Graphics
@@ -38,7 +35,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 					botaoEscala -> TODO("Not yet implemented")
 					botaoReflexao -> TODO("Not yet implemented")
 					botaoReta -> controladorGrafico.ativarObtencaoReta()
-					botaoCircunferencia -> TODO("Not yet implemented")
+					botaoCircunferencia -> controladorGrafico.ativarObtencaoCircunferencia()
 					botaoRegioesCodificadas -> TODO("Not yet implemented")
 					botaoEquacaoParametrica -> TODO("Not yet implemented")
 				}
@@ -120,7 +117,8 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 				when(elementoGrafico)
 				{
 					is Reta -> if (elementoGrafico.algoritmoReta == AlgoritmoReta.DDA) dda(g, elementoGrafico.p1, elementoGrafico.p2)
-								else if (elementoGrafico.algoritmoReta == AlgoritmoReta.Bresenham) bresenham(g, elementoGrafico.p1, elementoGrafico.p2)
+								else if (elementoGrafico.algoritmoReta == AlgoritmoReta.Bresenham) bresenhamReta(g, elementoGrafico.p1, elementoGrafico.p2)
+					is Circunferencia -> bresenhamCircunferencia(g, elementoGrafico.centro, elementoGrafico.raio)
 				}
 			}
 		}
@@ -149,13 +147,13 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			}
 		}
 
-		private fun bresenham(g: Graphics?, p1: Ponto?, p2: Ponto?)
+		private fun bresenhamReta(g: Graphics?, p1: Ponto?, p2: Ponto?)
 		{
 			if (g != null && p1 != null && p2 != null && p1.x != null && p1.y != null && p2.x != null && p2.y != null)
-				bresenham(g, p1.x!!, p1.y!!, p2.x!!, p2.y!!)
+				bresenhamReta(g, p1.x!!, p1.y!!, p2.x!!, p2.y!!)
 		}
 
-		private fun bresenham(g: Graphics, x1: Int, y1: Int, x2: Int, y2: Int)
+		private fun bresenhamReta(g: Graphics, x1: Int, y1: Int, x2: Int, y2: Int)
 		{
 			var dx: Int = x2 - x1
 			var dy: Int = y2 - y1
@@ -190,6 +188,42 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 					}
 					g.drawOval(x, y, 1, 1)// colora_pixel(x,y)
 				}
+			}
+		}
+
+		private fun bresenhamCircunferencia(g: Graphics?, centro: Ponto?, raio: Int?)
+		{
+			if (g != null && centro != null && raio != null && centro.x != null && centro.y != null)
+				bresenhamCircunferencia(g, centro.x!!, centro.y!!, raio)
+		}
+
+		private fun plotaSimetricos(g: Graphics, x: Int, y: Int, xc: Int, yc: Int)
+		{
+			g.drawOval(xc+x, yc+y, 1, 1)
+			g.drawOval(xc+x, yc-y, 1, 1)
+			g.drawOval(xc-x, yc+y, 1, 1)
+			g.drawOval(xc-x, yc-y, 1, 1)
+			g.drawOval(xc+y, yc+x, 1, 1)
+			g.drawOval(xc+y, yc-x, 1, 1)
+			g.drawOval(xc-y, yc+x, 1, 1)
+			g.drawOval(xc-y, yc-x, 1, 1)
+		}
+
+		private fun bresenhamCircunferencia(g: Graphics, xc: Int, yc: Int, r: Int)
+		{
+			var x: Int = 0
+			var y: Int = r
+			var p: Int = 3 - 2 * r;
+			plotaSimetricos(g, x, y, xc, yc)
+			while (x < y)
+			{
+				if (p < 0) p+= 4*x+6
+				else {
+					p+= 4*(x-y)+10
+					y--
+				}
+				x++
+				plotaSimetricos(g, x, y, xc, yc)
 			}
 		}
 
