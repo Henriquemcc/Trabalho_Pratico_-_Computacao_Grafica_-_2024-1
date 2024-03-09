@@ -1,6 +1,8 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.Ponto
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaAlgoritmoReta
+import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import java.awt.event.MouseEvent
 import javax.swing.JFrame
 
@@ -15,7 +17,9 @@ class ControladorGrafico()
 	fun ativarObtencaoReta()
 	{
 		operacaoGrafica = OperacaoReta()
-		//(operacaoGrafica as OperacaoReta).algoritmoReta = obterAlgoritmoReta()
+		val janelaAlgoritmoReta = JanelaAlgoritmoReta(operacaoGrafica as OperacaoReta)
+		janelaAlgoritmoReta.isVisible = true
+		janelaAlgoritmoReta.size = obterResolucaoTela()
 	}
 
 	fun ativarObtencaoCircunferencia()
