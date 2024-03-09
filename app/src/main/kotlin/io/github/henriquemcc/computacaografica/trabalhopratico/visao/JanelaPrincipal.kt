@@ -120,7 +120,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 				when(elementoGrafico)
 				{
 					is Reta -> if (elementoGrafico.algoritmoReta == AlgoritmoReta.DDA) dda(g, elementoGrafico.p1, elementoGrafico.p2)
-								else if (elementoGrafico.algoritmoReta == AlgoritmoReta.Bresenham) TODO("Not yet implemented")
+								else if (elementoGrafico.algoritmoReta == AlgoritmoReta.Bresenham) bresenham(g, elementoGrafico.p1, elementoGrafico.p2)
 				}
 			}
 		}
@@ -146,6 +146,50 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 				x += xIncr
 				y += yIncr
 				g.drawOval(round(x).toInt(), round(y).toInt(), 1, 1)// set_pixel(round(x), round(y))
+			}
+		}
+
+		private fun bresenham(g: Graphics?, p1: Ponto?, p2: Ponto?)
+		{
+			if (g != null && p1 != null && p2 != null && p1.x != null && p1.y != null && p2.x != null && p2.y != null)
+				bresenham(g, p1.x!!, p1.y!!, p2.x!!, p2.y!!)
+		}
+
+		private fun bresenham(g: Graphics, x1: Int, y1: Int, x2: Int, y2: Int)
+		{
+			var dx: Int = x2 - x1
+			var dy: Int = y2 - y1
+			var incrx: Int? = null
+			var incry: Int? = null
+			if (dx >= 0)
+				incrx = 1
+			else {
+				incrx = -1
+				dx = -dx
+			}
+			if (dy >= 0)
+				incry = 1
+			else {
+				incry = -1
+				dy = -dy
+			}
+			var x: Int = x1
+			var y: Int = y1
+			g.drawOval(x, y, 1, 1) // colora_pixel(x,y)
+			if (dy < dx) {
+				var p: Int = 2 * dy - dx
+				val const1: Int = 2 * dy
+				val const2: Int = 2 * (dy-dx)
+				for (i in 0..<dx){
+					x += incrx
+					if (p < 0)
+						p += const1
+					else {
+						y+= incry
+						p+= const2
+					}
+					g.drawOval(x, y, 1, 1)// colora_pixel(x,y)
+				}
 			}
 		}
 
