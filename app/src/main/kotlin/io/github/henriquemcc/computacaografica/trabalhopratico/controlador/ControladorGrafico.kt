@@ -78,7 +78,6 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 			(elementoGraficoSelecionado as Reta).p2 = Ponto(event.x, event.y)
 			areaDesenho.elementosGraficos.add(elementoGraficoSelecionado as Reta)
 			areaDesenho.repaint()
-			elementoGraficoSelecionado = null
 		}
 	}
 
@@ -92,7 +91,6 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 			(elementoGraficoSelecionado as Circunferencia).raio = sqrt((event.x - (elementoGraficoSelecionado as Circunferencia).centro!!.x!!).toDouble().pow(2) + (event.y - (elementoGraficoSelecionado as Circunferencia).centro!!.y!!).toDouble().pow(2)).toInt()
 			areaDesenho.elementosGraficos.add(elementoGraficoSelecionado as Circunferencia)
 			areaDesenho.repaint()
-			elementoGraficoSelecionado = null
 		}
 
 	}
