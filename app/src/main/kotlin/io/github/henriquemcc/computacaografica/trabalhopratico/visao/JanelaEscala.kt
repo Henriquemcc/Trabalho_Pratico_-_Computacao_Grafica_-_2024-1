@@ -11,8 +11,8 @@ import javax.swing.JTextField
 
 class JanelaEscala(private val controladorGrafico: ControladorGrafico): JFrame("Escala")
 {
-	private val jTextFieldEscalaX = HintJTextField("Escala de X")
-	private val jTextFieldEscalaY = HintJTextField("Escala de Y")
+	private val jTextFieldEscalaX = JTextFieldIncreaseDecreaseButtons("Escala de X", 0)
+	private val jTextFieldEscalaY = JTextFieldIncreaseDecreaseButtons("Escala de Y", 0)
 	private val jButtonOk = JButton("OK")
 
 	init
@@ -20,8 +20,8 @@ class JanelaEscala(private val controladorGrafico: ControladorGrafico): JFrame("
 		// Adicionando listener no botão OK
 		jButtonOk.addActionListener {
 			val escala = Escala()
-			escala.x = jTextFieldEscalaX.text.toDouble()
-			escala.y = jTextFieldEscalaY.text.toDouble()
+			escala.x = jTextFieldEscalaX.jTextField.text.toDouble()
+			escala.y = jTextFieldEscalaY.jTextField.text.toDouble()
 			dispose()
 			controladorGrafico.aplicarEscala(escala)
 
