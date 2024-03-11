@@ -1,9 +1,6 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Circunferencia
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.ElementoGrafico
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Ponto
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Reta
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.*
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Escala
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Reflexao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
@@ -74,6 +71,14 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		elementoGraficoSelecionado = Ponto()
 	}
 
+	fun ativarBotaoPoligono()
+	{
+		elementoGraficoSelecionado = PoligonoSimples()
+		val janelaPoligono = JanelaPoligono(elementoGraficoSelecionado as PoligonoSimples)
+		janelaPoligono.isVisible = true
+		janelaPoligono.pack()
+	}
+
 	private fun cliqueReta(event: MouseEvent)
 	{
 		if ((elementoGraficoSelecionado as Reta).p1 == null)
@@ -109,7 +114,16 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 			is Reta -> cliqueReta(event)
 			is Circunferencia -> cliqueCircunferencia(event)
 			is Ponto -> cliquePonto(event)
+			is PoligonoSimples -> cliquePoligono(event)
 		}
+	}
+
+	private fun cliquePoligono(event: MouseEvent)
+	{
+		println("cliquePoligono")
+		(elementoGraficoSelecionado as PoligonoSimples).adicionarPonto(Ponto(event.x, event.y))
+		elementosGraficos.add(elementoGraficoSelecionado as PoligonoSimples)
+		areaDesenho.repaint()
 	}
 
 	private fun cliquePonto(event: MouseEvent)

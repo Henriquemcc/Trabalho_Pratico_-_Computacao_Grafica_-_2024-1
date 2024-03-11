@@ -2,10 +2,7 @@ package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.*
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Circunferencia
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.ElementoGrafico
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Ponto
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.Reta
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.*
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.Graphics
@@ -25,6 +22,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 		val botaoPonto = JButton("Ponto")
 		val botaoReta = JButton("Reta")
 		val botaoCircunferencia = JButton("Circunferência")
+		val botaoPoligono = JButton("Polígono")
 
 		// Botões de operações gráficas
 		val botaoTranslacao = JButton("Translação")
@@ -48,6 +46,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 					botaoRegioesCodificadas -> TODO("Not yet implemented")
 					botaoEquacaoParametrica -> TODO("Not yet implemented")
 					botaoPonto -> controladorGrafico.ativarBotaoPonto()
+					botaoPoligono -> controladorGrafico.ativarBotaoPoligono()
 				}
 			}
 		}
@@ -60,6 +59,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			botaoPonto.addActionListener(buttonHandler)
 			botaoReta.addActionListener(buttonHandler)
 			botaoCircunferencia.addActionListener(buttonHandler)
+			botaoPoligono.addActionListener(buttonHandler)
 			botaoTranslacao.addActionListener(buttonHandler)
 			botaoRotacao.addActionListener(buttonHandler)
 			botaoEscala.addActionListener(buttonHandler)
@@ -71,6 +71,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			botaoPonto.setMnemonic('P')
 			botaoReta.setMnemonic('R')
 			botaoCircunferencia.setMnemonic('C')
+			botaoPoligono.setMnemonic('L')
 			botaoRotacao.setMnemonic('O')
 			botaoTranslacao.setMnemonic('T')
 			botaoEscala.setMnemonic('E')
@@ -82,6 +83,7 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			add(botaoPonto)
 			add(botaoReta)
 			add(botaoCircunferencia)
+			add(botaoPoligono)
 			add(botaoTranslacao)
 			add(botaoRotacao)
 			add(botaoEscala)
@@ -140,14 +142,29 @@ class JanelaPrincipal() : JFrame("Trabalho Prático - Computação Gráfica")
 			super.paintComponent(g)
 			for (elementoGrafico in elementosGraficos)
 			{
-				when(elementoGrafico)
-				{
-					is Reta -> if (elementoGrafico.algoritmoReta == AlgoritmoReta.DDA) dda(g, elementoGrafico.p1, elementoGrafico.p2)
-								else if (elementoGrafico.algoritmoReta == AlgoritmoReta.Bresenham) bresenhamReta(g, elementoGrafico.p1, elementoGrafico.p2)
-					is Circunferencia -> bresenhamCircunferencia(g, elementoGrafico.centro, elementoGrafico.raio)
-					is Ponto -> ponto(g, elementoGrafico)
-				}
+				selecionarElementoGrafico(elementoGrafico, g)
 			}
+		}
+
+		private fun selecionarElementoGrafico(elementoGrafico: ElementoGrafico, g: Graphics?)
+		{
+			when (elementoGrafico)
+			{
+				is Reta -> if (elementoGrafico.algoritmoReta == AlgoritmoReta.DDA) dda(g, elementoGrafico.p1, elementoGrafico.p2)
+				else if (elementoGrafico.algoritmoReta == AlgoritmoReta.Bresenham) bresenhamReta(g, elementoGrafico.p1, elementoGrafico.p2)
+
+				is Circunferencia -> bresenhamCircunferencia(g, elementoGrafico.centro, elementoGrafico.raio)
+				is Ponto -> ponto(g, elementoGrafico)
+				is PoligonoSimples -> poligonoSimples(g, elementoGrafico)
+
+			}
+		}
+
+		private fun poligonoSimples(g: Graphics?, elementoGrafico: PoligonoSimples)
+		{
+			if (g != null)
+				for (elemento in elementoGrafico.elementos)
+					selecionarElementoGrafico(elemento, g)
 		}
 
 		private fun ponto(g: Graphics?, p: Ponto) {
