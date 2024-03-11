@@ -3,16 +3,13 @@ package io.github.henriquemcc.computacaografica.trabalhopratico.visao
 import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Escala
 import java.awt.GridLayout
-import java.awt.event.FocusAdapter
-import java.awt.event.FocusEvent
 import javax.swing.JButton
 import javax.swing.JFrame
-import javax.swing.JTextField
 
 class JanelaEscala(private val controladorGrafico: ControladorGrafico): JFrame("Escala")
 {
-	private val jTextFieldEscalaX = JTextFieldIncreaseDecreaseButtons("Escala de X", 0)
-	private val jTextFieldEscalaY = JTextFieldIncreaseDecreaseButtons("Escala de Y", 0)
+	private val jTextFieldEscalaX = IncreaseDecreaseJTextField("Escala de X", 0)
+	private val jTextFieldEscalaY = IncreaseDecreaseJTextField("Escala de Y", 0)
 	private val jButtonOk = JButton("OK")
 
 	init

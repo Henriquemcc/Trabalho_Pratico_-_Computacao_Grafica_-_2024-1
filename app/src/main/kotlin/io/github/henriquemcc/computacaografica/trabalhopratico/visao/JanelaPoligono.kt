@@ -9,7 +9,7 @@ import javax.swing.border.TitledBorder
 class JanelaPoligono(val poligonoSimples: PoligonoSimples): JFrame("Polígono")
 {
 
-	private val jTextFieldQuantidadeLados = JTextFieldIncreaseDecreaseButtons("Quantidade de lados", 3)
+	private val jTextFieldQuantidadeLados = IncreaseDecreaseJTextField("Quantidade de lados", 3)
 
 	private val jPanelAlgoritmoReta = object: JPanel() {
 		val jRadioButtonDda = JRadioButton("DDA")

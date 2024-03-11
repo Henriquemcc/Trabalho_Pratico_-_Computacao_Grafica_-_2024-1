@@ -5,11 +5,10 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
-import javax.swing.JTextField
 
 class JanelaRotacao(private val controladorGrafico: ControladorGrafico): JFrame("Rotação")
 {
-	private val jTextFieldAngulo = JTextFieldIncreaseDecreaseButtons("Ângulo")
+	private val jTextFieldAngulo = IncreaseDecreaseJTextField("Ângulo")
 	private val jButtonOk = JButton("OK")
 
 	init

@@ -5,12 +5,11 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
-import javax.swing.JTextField
 
 class JanelaTranslacao(private val controladorGrafico: ControladorGrafico): JFrame("Translação")
 {
-	private val jTextFieldDeslocamentoX = JTextFieldIncreaseDecreaseButtons("Deslocamento X", 0)
-	private val jTextFieldDeslocamentoY = JTextFieldIncreaseDecreaseButtons("Deslocamento Y", 0)
+	private val jTextFieldDeslocamentoX = IncreaseDecreaseJTextField("Deslocamento X", 0)
+	private val jTextFieldDeslocamentoY = IncreaseDecreaseJTextField("Deslocamento Y", 0)
 	private val jButtonOk = JButton("OK")
 
 	init
