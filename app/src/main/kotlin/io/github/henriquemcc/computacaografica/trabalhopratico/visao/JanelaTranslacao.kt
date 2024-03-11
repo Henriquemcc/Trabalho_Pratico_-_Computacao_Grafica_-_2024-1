@@ -9,8 +9,8 @@ import javax.swing.JTextField
 
 class JanelaTranslacao(private val controladorGrafico: ControladorGrafico): JFrame("Translação")
 {
-	private val jTextFieldDeslocamentoX = HintJTextField("Deslocamento X")
-	private val jTextFieldDeslocamentoY = HintJTextField("Deslocamento Y")
+	private val jTextFieldDeslocamentoX = JTextFieldIncreaseDecreaseButtons("Deslocamento X", 0)
+	private val jTextFieldDeslocamentoY = JTextFieldIncreaseDecreaseButtons("Deslocamento Y", 0)
 	private val jButtonOk = JButton("OK")
 
 	init
@@ -18,8 +18,8 @@ class JanelaTranslacao(private val controladorGrafico: ControladorGrafico): JFra
 		// Adicionando listener no botão OK
 		jButtonOk.addActionListener {
 			val translacao = Translacao()
-			translacao.x = Integer.parseInt(jTextFieldDeslocamentoX.text)
-			translacao.y = Integer.parseInt(jTextFieldDeslocamentoY.text)
+			translacao.x = Integer.parseInt(jTextFieldDeslocamentoX.jTextField.text)
+			translacao.y = Integer.parseInt(jTextFieldDeslocamentoY.jTextField.text)
 			dispose()
 			controladorGrafico.aplicarTranslacao(translacao)
 		}
