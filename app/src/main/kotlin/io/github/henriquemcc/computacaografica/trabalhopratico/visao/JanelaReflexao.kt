@@ -21,6 +21,7 @@ class JanelaReflexao(private val controladorGrafico: ControladorGrafico): JFrame
 		// Adicionando JRadioButtons ao ButtonGroup
 		buttonGroup.add(jRadioButtonEmRelacaoAoEixoX)
 		buttonGroup.add(jRadioButtonEmRelacaoAoEixoY)
+		buttonGroup.add(jRadioButtonEmRelacaoAoEixoXY)
 
 		// Adicionando listener no botão OK
 		jButtonOk.addActionListener {
