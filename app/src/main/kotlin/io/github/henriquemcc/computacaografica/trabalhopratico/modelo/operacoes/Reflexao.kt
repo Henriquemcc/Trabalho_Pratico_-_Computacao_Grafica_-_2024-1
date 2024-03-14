@@ -1,6 +1,6 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes
 
-class Reflexao(var tipoReflexao: TipoReflexao? = null)
+class Reflexao(var tipoReflexao: TipoReflexao? = null): OperacaoGrafica()
 {
 	enum class TipoReflexao
 	{
