@@ -293,6 +293,7 @@ class JanelaPrincipal : JFrame("Trabalho Prático - Computação Gráfica")
 			{
 				if (event != null)
 				{
+					barraStatus.text = "Clique em ${event.x}, ${event.y}"
 					controladorGrafico.clique(event)
 				}
 				super.mouseClicked(event)
