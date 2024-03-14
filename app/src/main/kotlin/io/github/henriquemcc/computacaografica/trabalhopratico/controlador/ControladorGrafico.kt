@@ -108,7 +108,6 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 
 	fun clique(event: MouseEvent)
 	{
-		println("Clique em ${event.x}, ${event.y}")
 		when (elementoGraficoSelecionado)
 		{
 			is Reta -> cliqueReta(event)
@@ -120,7 +119,6 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 
 	private fun cliquePoligono(event: MouseEvent)
 	{
-		println("cliquePoligono")
 		(elementoGraficoSelecionado as PoligonoSimples).adicionarPonto(Ponto(event.x, event.y))
 		elementosGraficos.add(elementoGraficoSelecionado as PoligonoSimples)
 		redesenhar()

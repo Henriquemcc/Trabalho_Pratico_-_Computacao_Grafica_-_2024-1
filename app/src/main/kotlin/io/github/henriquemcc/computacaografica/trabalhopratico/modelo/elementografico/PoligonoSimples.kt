@@ -19,7 +19,6 @@ class PoligonoSimples : Poligono()
 
 			if (pontos.size == quantidadeLados)
 			{
-				println("pontos.size == quantidadeLados: ${pontos.size} == ${quantidadeLados}")
 				for (i in 0..<pontos.size)
 				{
 					val vizinho = (i + 1) % pontos.size
