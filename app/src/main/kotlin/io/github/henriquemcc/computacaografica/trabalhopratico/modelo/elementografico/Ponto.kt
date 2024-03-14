@@ -28,8 +28,8 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 		val novoPonto = Ponto(x, y)
 		if (escala.x != null && escala.y != null)
 		{
-			novoPonto.x = novoPonto.x?.toDouble()?.times(escala.x!!)?.roundToInt()
-			novoPonto.y = novoPonto.y?.toDouble()?.times(escala.y!!)?.roundToInt()
+			novoPonto.x = x?.toDouble()?.times(escala.x!!)?.roundToInt()
+			novoPonto.y = y?.toDouble()?.times(escala.y!!)?.roundToInt()
 		}
 		return novoPonto
 	}
@@ -39,8 +39,8 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 		val novoPonto = Ponto(x, y)
 		if (translacao.x != null && translacao.y != null)
 		{
-			novoPonto.x = novoPonto.x?.plus(translacao.x!!)
-			novoPonto.y = novoPonto.y?.plus(translacao.y!!)
+			novoPonto.x = x?.plus(translacao.x!!)
+			novoPonto.y = y?.plus(translacao.y!!)
 		}
 		return novoPonto
 	}
