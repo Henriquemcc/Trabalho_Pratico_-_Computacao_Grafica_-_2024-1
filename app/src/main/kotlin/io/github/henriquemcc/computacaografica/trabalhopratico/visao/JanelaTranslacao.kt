@@ -6,7 +6,7 @@ import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
 
-class JanelaTranslacao(private val controladorGrafico: ControladorGrafico): JFrame("Translação")
+class JanelaTranslacao(private val controladorGrafico: ControladorGrafico) : JFrame("Translação")
 {
 	private val jTextFieldDeslocamentoX = IncreaseDecreaseJTextField("Deslocamento X", 0)
 	private val jTextFieldDeslocamentoY = IncreaseDecreaseJTextField("Deslocamento Y", 0)

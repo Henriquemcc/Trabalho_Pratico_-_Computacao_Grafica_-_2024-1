@@ -6,7 +6,7 @@ import javax.swing.JPanel
 import javax.swing.JTextField
 import javax.swing.border.TitledBorder
 
-class IncreaseDecreaseJTextField(val title: String, val initialValue: Int = 0): JPanel()
+class IncreaseDecreaseJTextField(val title: String, val initialValue: Int = 0) : JPanel()
 {
 	val jTextField = JTextField(initialValue.toString())
 	val jButtonIncrease = JButton("+")
@@ -19,7 +19,7 @@ class IncreaseDecreaseJTextField(val title: String, val initialValue: Int = 0): 
 		add(jTextField)
 		add(jButtonIncrease)
 		add(jButtonDecrease)
-		jButtonIncrease.addActionListener{
+		jButtonIncrease.addActionListener {
 			jTextField.text = ((jTextField.text.toIntOrNull() ?: 0) + 1).toString()
 		}
 		jButtonDecrease.addActionListener {

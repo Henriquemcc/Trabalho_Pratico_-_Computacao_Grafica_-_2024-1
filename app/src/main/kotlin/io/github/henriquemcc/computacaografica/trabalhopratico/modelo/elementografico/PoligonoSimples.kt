@@ -2,13 +2,14 @@ package io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementog
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.AlgoritmoReta
 
-class PoligonoSimples(): Poligono()
+class PoligonoSimples : Poligono()
 {
 	var quantidadeLados: Int? = null
 	var algoritmoReta: AlgoritmoReta? = null
 	private val pontos = mutableListOf<Ponto>()
 
-	fun adicionarPonto(ponto: Ponto){
+	fun adicionarPonto(ponto: Ponto)
+	{
 		if (quantidadeLados != null && algoritmoReta != null)
 		{
 			if (pontos.size + 1 > quantidadeLados!!)

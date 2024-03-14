@@ -6,12 +6,13 @@ import java.awt.GridLayout
 import javax.swing.*
 import javax.swing.border.TitledBorder
 
-class JanelaPoligono(val poligonoSimples: PoligonoSimples): JFrame("Polígono")
+class JanelaPoligono(val poligonoSimples: PoligonoSimples) : JFrame("Polígono")
 {
 
 	private val jTextFieldQuantidadeLados = IncreaseDecreaseJTextField("Quantidade de lados", 3)
 
-	private val jPanelAlgoritmoReta = object: JPanel() {
+	private val jPanelAlgoritmoReta = object : JPanel()
+	{
 		val jRadioButtonDda = JRadioButton("DDA")
 		val jRadioButtonBresenham = JRadioButton("Bresenham")
 		val buttonGroup = ButtonGroup()
@@ -20,7 +21,7 @@ class JanelaPoligono(val poligonoSimples: PoligonoSimples): JFrame("Polígono")
 		{
 			layout = GridLayout(2, 1)
 			border = TitledBorder("Algoritmo da Reta")
-			
+
 			// Adicionando JRadioButtons ao ButtonGroup
 			buttonGroup.add(jRadioButtonDda)
 			buttonGroup.add(jRadioButtonBresenham)
@@ -36,12 +37,12 @@ class JanelaPoligono(val poligonoSimples: PoligonoSimples): JFrame("Polígono")
 	init
 	{
 		// Adicionando listener no botão OK
-		jButtonOk.addActionListener{
+		jButtonOk.addActionListener {
 			val quantidadeLados = jTextFieldQuantidadeLados.jTextField.text.toIntOrNull()
 			poligonoSimples.quantidadeLados = quantidadeLados
 			poligonoSimples.algoritmoReta = if (jPanelAlgoritmoReta.jRadioButtonDda.isSelected) AlgoritmoReta.DDA
-			                                else if (jPanelAlgoritmoReta.jRadioButtonBresenham.isSelected) AlgoritmoReta.Bresenham
-											else null
+			else if (jPanelAlgoritmoReta.jRadioButtonBresenham.isSelected) AlgoritmoReta.Bresenham
+			else null
 			dispose()
 		}
 

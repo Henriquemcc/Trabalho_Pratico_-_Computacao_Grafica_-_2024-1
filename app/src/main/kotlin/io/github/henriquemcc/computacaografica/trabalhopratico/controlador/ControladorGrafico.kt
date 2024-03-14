@@ -4,7 +4,8 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementogr
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.*
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.*
 import java.awt.event.MouseEvent
-import kotlin.math.*
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 {
@@ -163,11 +164,14 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		}
 	}
 
-	private fun redesenhar() {
+	private fun redesenhar()
+	{
 		elementosGraficosJanela.clear()
-		for (e in elementosGraficos) {
+		for (e in elementosGraficos)
+		{
 			var elemento = e
-			for (operacao in operacoesGraficas) {
+			for (operacao in operacoesGraficas)
+			{
 				if (operacao is Escala) elemento = elemento.escala(operacao)
 				if (operacao is Reflexao) elemento = elemento.reflexao(operacao)
 				if (operacao is Rotacao) elemento = elemento.rotacao(operacao)

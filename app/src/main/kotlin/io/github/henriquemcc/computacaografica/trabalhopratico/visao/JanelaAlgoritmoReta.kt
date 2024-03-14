@@ -8,7 +8,7 @@ import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JRadioButton
 
-class JanelaAlgoritmoReta(private val reta: Reta): JFrame("Algoritmo da Reta")
+class JanelaAlgoritmoReta(private val reta: Reta) : JFrame("Algoritmo da Reta")
 {
 	private val jRadioButtonDda = JRadioButton("DDA")
 	private val jRadioButtonBresenham = JRadioButton("Bresenham")
@@ -30,7 +30,7 @@ class JanelaAlgoritmoReta(private val reta: Reta): JFrame("Algoritmo da Reta")
 		}
 
 		// Configurando o layout
-		layout = GridLayout(3,1)
+		layout = GridLayout(3, 1)
 
 		// Adicionando mnemônicos
 		jRadioButtonDda.setMnemonic('D')

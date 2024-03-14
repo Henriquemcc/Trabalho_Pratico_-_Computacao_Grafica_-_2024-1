@@ -5,18 +5,15 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
 
-open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<ElementoGrafico>()): ElementoGrafico()
+open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<ElementoGrafico>()) : ElementoGrafico()
 {
 	override fun rotacao(rotacao: Rotacao): Poligono
 	{
 		val novoPoligono = Poligono()
 		if (rotacao.angulo != null)
-		{
 			for (elemento in elementos)
 				novoPoligono.elementos.add(elemento.rotacao(rotacao))
 
-
-		}
 		return novoPoligono
 	}
 
@@ -36,6 +33,7 @@ open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<
 		if (translacao.x != null && translacao.y != null)
 			for (elemento in elementos)
 				novoPoligono.elementos.add(elemento.translacao(translacao))
+
 		return novoPoligono
 	}
 
@@ -45,6 +43,7 @@ open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<
 		if (reflexao.tipoReflexao != null)
 			for (elemento in elementos)
 				novoPoligono.elementos.add(elemento.reflexao(reflexao))
+
 		return novoPoligono
 	}
 }

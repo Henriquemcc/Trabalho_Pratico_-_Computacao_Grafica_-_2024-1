@@ -48,23 +48,27 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 	override fun reflexao(reflexao: Reflexao): Ponto
 	{
 		val novoPonto = Ponto(x, y)
-		when(reflexao.tipoReflexao)
+		when (reflexao.tipoReflexao)
 		{
 			Reflexao.TipoReflexao.EM_RELACAO_EIXO_X ->
 			{
 				novoPonto.y = y?.times(-1)
 			}
+
 			Reflexao.TipoReflexao.EM_RELACAO_EIXO_Y ->
 			{
 				novoPonto.x = x?.times(-1)
 			}
+
 			Reflexao.TipoReflexao.EM_RELACAO_EIXO_XY ->
 			{
 				novoPonto.x = x?.times(-1)
 				novoPonto.y = y?.times(-1)
 			}
 
-			null -> {}
+			null ->
+			{
+			}
 		}
 		return novoPonto
 	}

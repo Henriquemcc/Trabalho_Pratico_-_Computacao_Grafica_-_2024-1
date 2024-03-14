@@ -1,6 +1,6 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico
 
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.*
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.AlgoritmoReta
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Escala
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Reflexao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao

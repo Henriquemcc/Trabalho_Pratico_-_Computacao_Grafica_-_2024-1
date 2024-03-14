@@ -6,7 +6,7 @@ import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
 
-class JanelaRotacao(private val controladorGrafico: ControladorGrafico): JFrame("Rotação")
+class JanelaRotacao(private val controladorGrafico: ControladorGrafico) : JFrame("Rotação")
 {
 	private val jTextFieldAngulo = IncreaseDecreaseJTextField("Ângulo")
 	private val jButtonOk = JButton("OK")

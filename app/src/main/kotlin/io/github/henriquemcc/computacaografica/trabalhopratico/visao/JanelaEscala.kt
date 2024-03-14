@@ -6,7 +6,7 @@ import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
 
-class JanelaEscala(private val controladorGrafico: ControladorGrafico): JFrame("Escala")
+class JanelaEscala(private val controladorGrafico: ControladorGrafico) : JFrame("Escala")
 {
 	private val jTextFieldEscalaX = IncreaseDecreaseJTextField("Escala de X", 0)
 	private val jTextFieldEscalaY = IncreaseDecreaseJTextField("Escala de Y", 0)
