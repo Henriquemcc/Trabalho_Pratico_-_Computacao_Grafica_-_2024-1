@@ -8,27 +8,35 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 
 class Reta(var p1: Ponto? = null, var p2: Ponto? = null, var algoritmoReta: AlgoritmoReta? = null) : ElementoGrafico()
 {
-	override fun rotacao(rotacao: Rotacao)
+	override fun rotacao(rotacao: Rotacao): Reta
 	{
-		p1?.rotacao(rotacao)
-		p2?.rotacao(rotacao)
+		val novaReta = Reta(p1, p2, algoritmoReta)
+		novaReta.p1 = p1?.rotacao(rotacao)
+		novaReta.p2 = p2?.rotacao(rotacao)
+		return novaReta
 	}
 
-	override fun escala(escala: Escala)
+	override fun escala(escala: Escala): Reta
 	{
-		p1?.escala(escala)
-		p2?.escala(escala)
+		val novaReta = Reta(p1, p2, algoritmoReta)
+		novaReta.p1 = p1?.escala(escala)
+		novaReta.p2 = p2?.escala(escala)
+		return novaReta
 	}
 
-	override fun translacao(translacao: Translacao)
+	override fun translacao(translacao: Translacao): Reta
 	{
-		p1?.translacao(translacao)
-		p2?.translacao(translacao)
+		val novaReta = Reta(p1, p2, algoritmoReta)
+		novaReta.p1 = p1?.translacao(translacao)
+		novaReta.p2 = p2?.translacao(translacao)
+		return novaReta
 	}
 
-	override fun reflexao(reflexao: Reflexao)
+	override fun reflexao(reflexao: Reflexao): Reta
 	{
-		p1?.reflexao(reflexao)
-		p2?.reflexao(reflexao)
+		val novaReta = Reta(p1, p2, algoritmoReta)
+		novaReta.p1 = p1?.reflexao(reflexao)
+		novaReta.p2 = p2?.reflexao(reflexao)
+		return novaReta
 	}
 }

@@ -7,23 +7,31 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 
 class Circunferencia(var centro: Ponto? = null, var raio: Int? = null) : ElementoGrafico()
 {
-	override fun rotacao(rotacao: Rotacao)
+	override fun rotacao(rotacao: Rotacao): Circunferencia
 	{
-		centro?.rotacao(rotacao)
+		val novaCircunferencia = Circunferencia(centro, raio)
+		novaCircunferencia.centro = centro?.rotacao(rotacao)
+		return novaCircunferencia
 	}
 
-	override fun escala(escala: Escala)
+	override fun escala(escala: Escala): Circunferencia
 	{
-		centro?.escala(escala)
+		val novaCircunferencia = Circunferencia(centro, raio)
+		novaCircunferencia.centro = centro?.escala(escala)
+		return novaCircunferencia
 	}
 
-	override fun translacao(translacao: Translacao)
+	override fun translacao(translacao: Translacao): Circunferencia
 	{
-		centro?.translacao(translacao)
+		val novaCircunferencia = Circunferencia(centro, raio)
+		novaCircunferencia.centro = centro?.translacao(translacao)
+		return novaCircunferencia
 	}
 
-	override fun reflexao(reflexao: Reflexao)
+	override fun reflexao(reflexao: Reflexao): Circunferencia
 	{
-		centro?.reflexao(reflexao)
+		val novaCircunferencia = Circunferencia(centro, raio)
+		novaCircunferencia.centro = centro?.reflexao(reflexao)
+		return novaCircunferencia
 	}
 }

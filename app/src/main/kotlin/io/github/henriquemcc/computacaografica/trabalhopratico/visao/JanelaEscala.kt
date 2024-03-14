@@ -20,7 +20,7 @@ class JanelaEscala(private val controladorGrafico: ControladorGrafico): JFrame("
 			escala.x = jTextFieldEscalaX.jTextField.text.toDouble()
 			escala.y = jTextFieldEscalaY.jTextField.text.toDouble()
 			dispose()
-			controladorGrafico.aplicarEscala(escala)
+			controladorGrafico.adicionarEscala(escala)
 
 		}
 

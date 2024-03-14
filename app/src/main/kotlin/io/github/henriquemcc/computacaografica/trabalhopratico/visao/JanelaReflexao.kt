@@ -30,7 +30,7 @@ class JanelaReflexao(private val controladorGrafico: ControladorGrafico): JFrame
 									else if (jRadioButtonEmRelacaoAoEixoY.isSelected) Reflexao.TipoReflexao.EM_RELACAO_EIXO_Y
 									else if (jRadioButtonEmRelacaoAoEixoXY.isSelected) Reflexao.TipoReflexao.EM_RELACAO_EIXO_XY
 									else null
-			controladorGrafico.aplicarReflexao(reflexao)
+			controladorGrafico.adicionarReflexao(reflexao)
 			dispose()
 		}
 

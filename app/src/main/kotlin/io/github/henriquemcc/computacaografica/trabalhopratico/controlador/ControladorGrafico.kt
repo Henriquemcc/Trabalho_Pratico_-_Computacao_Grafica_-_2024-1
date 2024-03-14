@@ -1,17 +1,18 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.controlador
 
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementografico.*
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Escala
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Reflexao
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
-import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
+import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.*
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.*
 import java.awt.event.MouseEvent
 import kotlin.math.*
 
 class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 {
-	private val elementosGraficos = areaDesenho.elementosGraficos
+	private val elementosGraficos = mutableSetOf<ElementoGrafico>()
+	private val operacoesGraficas = mutableListOf<OperacaoGrafica>()
+
+	private val elementosGraficosJanela = areaDesenho.elementosGraficos
+
 	private var elementoGraficoSelecionado: ElementoGrafico? = null
 
 	fun ativarObtencaoReta()
@@ -48,14 +49,12 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		janelaRotacao.pack()
 	}
 
-	fun aplicarTranslacao(translacao: Translacao)
+	fun adicionarTranslacao(translacao: Translacao)
 	{
-		println("Aplicar translação")
 		if (translacao.x != null && translacao.y != null)
 		{
-			for (elementoGrafico in elementosGraficos)
-				elementoGrafico.translacao(translacao)
-			areaDesenho.repaint()
+			operacoesGraficas.add(translacao)
+			redesenhar()
 		}
 	}
 
@@ -88,7 +87,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		{
 			(elementoGraficoSelecionado as Reta).p2 = Ponto(event.x, event.y)
 			elementosGraficos.add(elementoGraficoSelecionado as Reta)
-			areaDesenho.repaint()
+			redesenhar()
 		}
 	}
 
@@ -101,7 +100,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		{
 			(elementoGraficoSelecionado as Circunferencia).raio = sqrt((event.x - (elementoGraficoSelecionado as Circunferencia).centro!!.x!!).toDouble().pow(2) + (event.y - (elementoGraficoSelecionado as Circunferencia).centro!!.y!!).toDouble().pow(2)).toInt()
 			elementosGraficos.add(elementoGraficoSelecionado as Circunferencia)
-			areaDesenho.repaint()
+			redesenhar()
 		}
 
 	}
@@ -123,7 +122,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 		println("cliquePoligono")
 		(elementoGraficoSelecionado as PoligonoSimples).adicionarPonto(Ponto(event.x, event.y))
 		elementosGraficos.add(elementoGraficoSelecionado as PoligonoSimples)
-		areaDesenho.repaint()
+		redesenhar()
 	}
 
 	private fun cliquePonto(event: MouseEvent)
@@ -133,40 +132,49 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 			(elementoGraficoSelecionado as Ponto).x = event.x
 			(elementoGraficoSelecionado as Ponto).y = event.y
 			elementosGraficos.add(elementoGraficoSelecionado as Ponto)
-			areaDesenho.repaint()
+			redesenhar()
 		}
 	}
 
-	fun aplicarEscala(escala: Escala)
+	fun adicionarEscala(escala: Escala)
 	{
-		println("Aplicar Escala")
 		if (escala.x != null && escala.y != null)
 		{
-			for (elementoGrafico in elementosGraficos)
-				elementoGrafico.escala(escala)
-			areaDesenho.repaint()
+			operacoesGraficas.add(escala)
+			redesenhar()
 		}
 	}
 
-	fun aplicarRotacao(rotacao: Rotacao)
+	fun adicionarRotacao(rotacao: Rotacao)
 	{
-		println("Aplicar Rotação")
 		if (rotacao.angulo != null)
 		{
-			for (elementoGrafico in elementosGraficos)
-				elementoGrafico.rotacao(rotacao)
-			areaDesenho.repaint()
+			operacoesGraficas.add(rotacao)
+			redesenhar()
 		}
 	}
 
-	fun aplicarReflexao(reflexao: Reflexao)
+	fun adicionarReflexao(reflexao: Reflexao)
 	{
-		println("Aplicar Reflexão")
 		if (reflexao.tipoReflexao != null)
 		{
-			for (elementoGrafico in elementosGraficos)
-				elementoGrafico.reflexao(reflexao)
-			areaDesenho.repaint()
+			operacoesGraficas.add(reflexao)
+			redesenhar()
 		}
+	}
+
+	private fun redesenhar() {
+		elementosGraficosJanela.clear()
+		for (e in elementosGraficos) {
+			var elemento = e
+			for (operacao in operacoesGraficas) {
+				if (operacao is Escala) elemento = elemento.escala(operacao)
+				if (operacao is Reflexao) elemento = elemento.reflexao(operacao)
+				if (operacao is Rotacao) elemento = elemento.rotacao(operacao)
+				if (operacao is Translacao) elemento = elemento.translacao(operacao)
+			}
+			elementosGraficosJanela.add(elemento)
+		}
+		areaDesenho.repaint()
 	}
 }

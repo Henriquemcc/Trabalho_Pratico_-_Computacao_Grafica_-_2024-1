@@ -20,7 +20,7 @@ class JanelaTranslacao(private val controladorGrafico: ControladorGrafico): JFra
 			translacao.x = Integer.parseInt(jTextFieldDeslocamentoX.jTextField.text)
 			translacao.y = Integer.parseInt(jTextFieldDeslocamentoY.jTextField.text)
 			dispose()
-			controladorGrafico.aplicarTranslacao(translacao)
+			controladorGrafico.adicionarTranslacao(translacao)
 		}
 
 		// Configurando o layout

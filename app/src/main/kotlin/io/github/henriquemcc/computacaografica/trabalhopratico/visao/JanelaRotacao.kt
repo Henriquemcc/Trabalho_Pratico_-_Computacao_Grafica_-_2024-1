@@ -18,7 +18,7 @@ class JanelaRotacao(private val controladorGrafico: ControladorGrafico): JFrame(
 			val rotacao = Rotacao()
 			rotacao.angulo = jTextFieldAngulo.jTextField.text.toDouble()
 			dispose()
-			controladorGrafico.aplicarRotacao(rotacao)
+			controladorGrafico.adicionarRotacao(rotacao)
 		}
 
 		// Configurando o layout
