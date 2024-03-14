@@ -1,0 +1,3 @@
+package io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes
+
+abstract class OperacaoGrafica
