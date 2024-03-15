@@ -34,4 +34,9 @@ class Circunferencia(var centro: Ponto? = null, var raio: Int? = null) : Element
 		novaCircunferencia.centro = centro?.reflexao(reflexao)
 		return novaCircunferencia
 	}
+
+	override fun clone(): Circunferencia
+	{
+		return Circunferencia(centro, raio)
+	}
 }

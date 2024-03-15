@@ -72,4 +72,9 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 		}
 		return novoPonto
 	}
+
+	override fun clone(): Ponto
+	{
+		return Ponto(x, y)
+	}
 }

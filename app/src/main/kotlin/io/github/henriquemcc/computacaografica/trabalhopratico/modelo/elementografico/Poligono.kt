@@ -46,4 +46,12 @@ open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<
 
 		return novoPoligono
 	}
+
+	override fun clone(): Poligono
+	{
+		val cloneElementos = mutableListOf<ElementoGrafico>()
+		for (elemento in elementos)
+			cloneElementos.add(elemento.clone())
+		return Poligono(cloneElementos)
+	}
 }

@@ -5,7 +5,7 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
 
-abstract class ElementoGrafico : Comparable<ElementoGrafico>
+abstract class ElementoGrafico : Comparable<ElementoGrafico>, Cloneable
 {
 	var id: Int = 0
 
@@ -21,4 +21,6 @@ abstract class ElementoGrafico : Comparable<ElementoGrafico>
 	abstract fun translacao(translacao: Translacao): ElementoGrafico
 
 	abstract fun reflexao(reflexao: Reflexao): ElementoGrafico
+
+	public abstract override fun clone(): ElementoGrafico
 }

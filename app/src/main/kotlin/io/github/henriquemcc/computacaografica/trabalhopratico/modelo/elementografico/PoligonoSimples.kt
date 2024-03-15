@@ -80,4 +80,15 @@ class PoligonoSimples : Poligono()
 		novoPoligonoSimples.transformarPontosEmRetas()
 		return novoPoligonoSimples
 	}
+
+	override fun clone(): PoligonoSimples
+	{
+		val novoPoligonoSimples = PoligonoSimples()
+		novoPoligonoSimples.quantidadeLados = quantidadeLados
+		novoPoligonoSimples.algoritmoReta = algoritmoReta
+		for (ponto in pontos)
+			novoPoligonoSimples.pontos.add(ponto.clone())
+		novoPoligonoSimples.transformarPontosEmRetas()
+		return novoPoligonoSimples
+	}
 }

@@ -39,4 +39,9 @@ class Reta(var p1: Ponto? = null, var p2: Ponto? = null, var algoritmoReta: Algo
 		novaReta.p2 = p2?.reflexao(reflexao)
 		return novaReta
 	}
+
+	override fun clone(): Reta
+	{
+		return Reta(p1, p2, algoritmoReta)
+	}
 }
