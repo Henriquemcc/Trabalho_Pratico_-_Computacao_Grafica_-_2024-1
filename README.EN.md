@@ -40,3 +40,13 @@ The following must be delivered:
 In addition to the content, the form of presentation, the correctness in the use of the Portuguese language and the clarity in the presentation of the arguments will be evaluated.
 
 Works delivered after the stipulated date will not be accepted. If the complete project with source code is not delivered, the work will not be accepted.
+
+## Video
+
+This is the video demonstrating how the program works (in Portuguese):
+
+[![Demonstração - Trabalho prático - Computação Gráfica - 2024-1](https://img.youtube.com/vi/IewOt3MKv0w/0.jpg)](https://www.youtube.com/watch?v=IewOt3MKv0w)
+
+## Executable
+
+The executable is available in [releases](https://github.com/Henriquemcc/Trabalho_Pratico_-_Computacao_Grafica_-_2024-1/releases).
