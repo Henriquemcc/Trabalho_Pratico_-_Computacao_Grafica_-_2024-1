@@ -11,7 +11,7 @@ import javax.swing.border.TitledBorder
  * @param title Título do JPanel.
  * @param initialValue Valor inicial numérico.
  */
-class IncreaseDecreaseJTextField(val title: String, val initialValue: Int = 0) : JPanel()
+class IncreaseDecreaseJTextField(val title: String, val initialValue: Number = 0) : JPanel()
 {
 	/**
 	 * JTextField com o valor numérico.
