@@ -8,14 +8,40 @@ import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JRadioButton
 
+/**
+ * Janela para obter os dados de reflexão.
+ * @param controladorGrafico Controlador gráfico que instanciou esta classe.
+ */
 class JanelaReflexao(private val controladorGrafico: ControladorGrafico) : JFrame("Reflexão")
 {
+	/**
+	 * Botão para selecionar a reflexão em relação ao eixo X.
+	 */
 	private val jRadioButtonEmRelacaoAoEixoX = JRadioButton("Em relação ao eixo X")
+
+	/**
+	 * Botão para selecionar a reflexão em relação ao eixo Y.
+	 */
 	private val jRadioButtonEmRelacaoAoEixoY = JRadioButton("Em relação ao eixo Y")
+
+	/**
+	 * Botão para selecionar a reflexão em relação ao eixo XY.
+	 */
 	private val jRadioButtonEmRelacaoAoEixoXY = JRadioButton("Em relação ao eixo XY")
+
+	/**
+	 * Botão OK
+	 */
 	private val jButtonOk = JButton("OK")
+
+	/**
+	 * Grupo de botões para selecionar a reflexão em relação aos eixos.
+	 */
 	private val buttonGroup = ButtonGroup()
 
+	/**
+	 * Constrói uma nova instância da classe JanelaReflexao.
+	 */
 	init
 	{
 		// Adicionando JRadioButtons ao ButtonGroup

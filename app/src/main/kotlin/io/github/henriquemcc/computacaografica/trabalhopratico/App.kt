@@ -8,6 +8,9 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaPrinc
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import javax.swing.JFrame
 
+/**
+ * Função principal, ponto de entrada no programa.
+ */
 fun main()
 {
 	val controladorGrafico = ControladorGrafico()

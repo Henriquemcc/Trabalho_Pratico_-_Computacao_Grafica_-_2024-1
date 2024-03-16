@@ -12,18 +12,39 @@ import javax.swing.JFrame
 import kotlin.math.pow
 import kotlin.math.sqrt
 
+/**
+ * Controlador responsável por realizar operações gráficas.
+ */
 class ControladorGrafico()
 {
+	/**
+	 * Janela principal do programa.
+	 */
 	private val janelaPrincipal = JanelaPrincipal(this)
 
+	/**
+	 * Elementos gráficos que serão processados.
+	 */
 	private var elementosGraficos = mutableListOf<ElementoGrafico>()
 
+	/**
+	 * Operações gráficas as quais os elementos gráficos serão submetidos.
+	 */
 	private var operacoesGraficas = mutableListOf<OperacaoGrafica>()
 
+	/**
+	 * Elementos gráficos que serão mostrados na janela.
+	 */
 	private val elementosGraficosJanela = janelaPrincipal.areaDesenho.elementosGraficos
 
+	/**
+	 * Elemento gráfico que está sendo trabalhado.
+	 */
 	private var elementoGraficoSelecionado: ElementoGrafico? = null
 
+	/**
+	 * Constrói uma nova instância da classe controlador.
+	 */
 	init
 	{
 		janelaPrincipal.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
@@ -32,6 +53,9 @@ class ControladorGrafico()
 		janelaPrincipal.isVisible = true
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão reta.
+	 */
 	fun ativarObtencaoReta()
 	{
 		elementoGraficoSelecionado = Reta()
@@ -40,11 +64,17 @@ class ControladorGrafico()
 		janelaAlgoritmoReta.pack()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão circunferência.
+	 */
 	fun ativarObtencaoCircunferencia()
 	{
 		elementoGraficoSelecionado = Circunferencia()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão translação.
+	 */
 	fun ativarObtencaoTranslacao()
 	{
 		val janelaTranslacao = JanelaTranslacao(this)
@@ -52,6 +82,9 @@ class ControladorGrafico()
 		janelaTranslacao.pack()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão escala
+	 */
 	fun ativarObtencaoEscala()
 	{
 		val janelaEscala = JanelaEscala(this)
@@ -59,6 +92,9 @@ class ControladorGrafico()
 		janelaEscala.pack()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão rotação.
+	 */
 	fun ativarObtencaoRotacao()
 	{
 		val janelaRotacao = JanelaRotacao(this)
@@ -66,6 +102,9 @@ class ControladorGrafico()
 		janelaRotacao.pack()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão OK na janela de translação.
+	 */
 	fun adicionarTranslacao(translacao: Translacao)
 	{
 		if (translacao.x != null && translacao.y != null)
@@ -75,6 +114,9 @@ class ControladorGrafico()
 		}
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão de reflexão.
+	 */
 	fun ativarReflexao()
 	{
 		val janelaReflexao = JanelaReflexao(this)
@@ -82,11 +124,17 @@ class ControladorGrafico()
 		janelaReflexao.pack()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão ponto.
+	 */
 	fun ativarBotaoPonto()
 	{
 		elementoGraficoSelecionado = Ponto()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica no botão polígono.
+	 */
 	fun ativarBotaoPoligono()
 	{
 		elementoGraficoSelecionado = PoligonoSimples()
@@ -95,6 +143,10 @@ class ControladorGrafico()
 		janelaPoligono.pack()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica na tela quando e a operação selecionada é reta.
+	 * @param event Evento do mouse.
+	 */
 	private fun cliqueReta(event: MouseEvent)
 	{
 		if ((elementoGraficoSelecionado as Reta).p1 == null)
@@ -108,6 +160,10 @@ class ControladorGrafico()
 		}
 	}
 
+	/**
+	 * Ação executada quando o usuário clica na tela e a operação selecionada é circunferência.
+	 * @param event Evento do mouse.
+	 */
 	private fun cliqueCircunferencia(event: MouseEvent)
 	{
 		if ((elementoGraficoSelecionado as Circunferencia).centro == null)
@@ -122,6 +178,10 @@ class ControladorGrafico()
 
 	}
 
+	/**
+	 * Ação executada quando o usuário clica na tela.
+	 * @param event Evento do mouse.
+	 */
 	fun clique(event: MouseEvent)
 	{
 		when (elementoGraficoSelecionado)
@@ -133,6 +193,10 @@ class ControladorGrafico()
 		}
 	}
 
+	/**
+	 * Ação executada quando o usuário clica na tela e a operação selecionada é polígono.
+	 * @param event Evento do mouse.
+	 */
 	private fun cliquePoligono(event: MouseEvent)
 	{
 		(elementoGraficoSelecionado as PoligonoSimples).adicionarPonto(Ponto(event.x, event.y))
@@ -140,6 +204,10 @@ class ControladorGrafico()
 		redesenhar()
 	}
 
+	/**
+	 * Ação executada quando o usuário clica na tela e a operação selecionada é ponto.
+	 * @param event Evento do mouse.
+	 */
 	private fun cliquePonto(event: MouseEvent)
 	{
 		if ((elementoGraficoSelecionado as Ponto).x == null || (elementoGraficoSelecionado as Ponto).y == null)
@@ -151,6 +219,10 @@ class ControladorGrafico()
 		}
 	}
 
+	/**
+	 * Adiciona escala às operações gráficas.
+	 * @param escala Escala a ser adicionada.
+	 */
 	fun adicionarEscala(escala: Escala)
 	{
 		if (escala.x != null && escala.y != null)
@@ -160,6 +232,10 @@ class ControladorGrafico()
 		}
 	}
 
+	/**
+	 * Adiciona rotação às operações gráficas.
+	 * @param rotacao Rotação a ser adicionada.
+	 */
 	fun adicionarRotacao(rotacao: Rotacao)
 	{
 		if (rotacao.angulo != null)
@@ -169,6 +245,10 @@ class ControladorGrafico()
 		}
 	}
 
+	/**
+	 * Adiciona reflexão às operações gráficas.
+	 * @param reflexao Reflexão a ser adicionada.
+	 */
 	fun adicionarReflexao(reflexao: Reflexao)
 	{
 		if (reflexao.tipoReflexao != null)
@@ -178,6 +258,9 @@ class ControladorGrafico()
 		}
 	}
 
+	/**
+	 * Redesenha a tela.
+	 */
 	private fun redesenhar()
 	{
 		elementosGraficosJanela.clear()
@@ -196,16 +279,26 @@ class ControladorGrafico()
 		janelaPrincipal.areaDesenho.repaint()
 	}
 
+	/**
+	 * Desfaz a inserção do último elemento gráfico.
+	 */
 	fun desfazerInsercaoElementoGrafico() {
 		elementosGraficos.removeLast()
 		redesenhar()
 	}
 
+	/**
+	 * Desfaz a última operação gráfica.
+	 */
 	fun desfazerOpercaoGrafica() {
 		operacoesGraficas.removeLast()
 		redesenhar()
 	}
 
+	/**
+	 * Salva os elementos gráficos e as operações gráficas em um arquivo.
+	 * @param path Caminho do arquivo a ser salvo.
+	 */
 	fun salvarArquivo(path: String) {
 		val fileOutputStream = FileOutputStream(path)
 		val objectOutputStream = ObjectOutputStream(fileOutputStream)
@@ -215,6 +308,10 @@ class ControladorGrafico()
 		fileOutputStream.close()
 	}
 
+	/**
+	 * Carrega os elementos gráficos e as operações gráficas de um arquivo.
+	 * @param path Caminho do arquivo a ser carregado.
+	 */
 	fun carregarArquivo(path: String) {
 		val fileInputStream = FileInputStream(path)
 		val objectInputStream = ObjectInputStream(fileInputStream)

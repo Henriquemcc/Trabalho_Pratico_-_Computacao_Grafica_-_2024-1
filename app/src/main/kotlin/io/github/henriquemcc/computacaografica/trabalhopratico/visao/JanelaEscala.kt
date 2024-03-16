@@ -6,12 +6,30 @@ import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
 
+/**
+ * Janela para obter a escala a ser aplicada.
+ * @param controladorGrafico Controlador gráfico que criou esta classe.
+ */
 class JanelaEscala(private val controladorGrafico: ControladorGrafico) : JFrame("Escala")
 {
+	/**
+	 * Campo de texto para obter a escala na posição X.
+	 */
 	private val jTextFieldEscalaX = IncreaseDecreaseJTextField("Escala de X", 0)
+
+	/**
+	 * Campo de texto para obter a escala na posição Y.
+	 */
 	private val jTextFieldEscalaY = IncreaseDecreaseJTextField("Escala de Y", 0)
+
+	/**
+	 * Botão OK.
+	 */
 	private val jButtonOk = JButton("OK")
 
+	/**
+	 * Constrói uma nova instância da classe JanelaEscala
+	 */
 	init
 	{
 		// Adicionando listener no botão OK

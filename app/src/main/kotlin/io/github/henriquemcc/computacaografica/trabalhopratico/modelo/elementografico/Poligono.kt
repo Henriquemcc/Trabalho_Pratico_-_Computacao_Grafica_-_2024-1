@@ -5,8 +5,17 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
 
+/**
+ * Representa um polígono.
+ * @param elementos Elementos gráficos desse polígono.
+ */
 open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<ElementoGrafico>()) : ElementoGrafico()
 {
+	/**
+	 * Gera um novo polígono rotacionado.
+	 * @param rotacao Rotação a ser realizada.
+	 * @return Polígono rotacionado.
+	 */
 	override fun rotacao(rotacao: Rotacao): Poligono
 	{
 		val novoPoligono = Poligono()
@@ -17,6 +26,11 @@ open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<
 		return novoPoligono
 	}
 
+	/**
+	 * Gera um novo polígono escalado.
+	 * @param escala Escala a ser realizada.
+	 * @return Polígono escalado.
+	 */
 	override fun escala(escala: Escala): Poligono
 	{
 		val novoPoligono = Poligono()
@@ -27,6 +41,11 @@ open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<
 		return novoPoligono
 	}
 
+	/**
+	 * Gera um novo polígono transladado.
+	 * @param translacao Translação a ser realizada.
+	 * @return Polígono transladado.
+	 */
 	override fun translacao(translacao: Translacao): Poligono
 	{
 		val novoPoligono = Poligono()
@@ -37,6 +56,11 @@ open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<
 		return novoPoligono
 	}
 
+	/**
+	 * Gera um novo polígono refletido.
+	 * @param reflexao Reflexão a ser realizada.
+	 * @return Polígono refletido.
+	 */
 	override fun reflexao(reflexao: Reflexao): Poligono
 	{
 		val novoPoligono = Poligono()
@@ -47,6 +71,10 @@ open class Poligono(var elementos: MutableList<ElementoGrafico> = mutableListOf<
 		return novoPoligono
 	}
 
+	/**
+	 * Clona o polígono.
+	 * @return Polígono clonado.
+	 */
 	override fun clone(): Poligono
 	{
 		val cloneElementos = mutableListOf<ElementoGrafico>()

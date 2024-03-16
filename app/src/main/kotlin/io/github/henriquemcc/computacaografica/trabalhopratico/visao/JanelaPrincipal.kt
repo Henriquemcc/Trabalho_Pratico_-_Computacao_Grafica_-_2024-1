@@ -13,26 +13,77 @@ import javax.swing.*
 import kotlin.math.abs
 import kotlin.math.round
 
+/**
+ * Janela principal do programa.
+ * @param controladorGrafico Controlador gráfico que instanciou esta classe.
+ */
 class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trabalho Prático - Computação Gráfica")
 {
+	/**
+	 * Área que será feito o desenho.
+	 */
 	val areaDesenho = AreaDesenho()
 
+	/**
+	 * Barra de ferramentas.
+	 */
 	private val barraFerramentas = object : JPanel()
 	{
 		// Botões de elementos gráficos
+		/**
+		 * Botão para inserir um ponto.
+		 */
 		val botaoPonto = JButton("Ponto")
+
+		/**
+		 * Botão para inserir uma reta.
+		 */
 		val botaoReta = JButton("Reta")
+
+		/**
+		 * Botão para inserir uma circunferência.
+		 */
 		val botaoCircunferencia = JButton("Circunferência")
+
+		/**
+		 * Botão para inserir um polígono.
+		 */
 		val botaoPoligono = JButton("Polígono")
 
 		// Botões de operações gráficas
+		/**
+		 * Botão para realizar translação.
+		 */
 		val botaoTranslacao = JButton("Translação")
+
+		/**
+		 * Botão para realizar rotação.
+		 */
 		val botaoRotacao = JButton("Rotação")
+
+		/**
+		 * Botão para realizar escala.
+		 */
 		val botaoEscala = JButton("Escala")
+
+		/**
+		 * Botão para realizar reflexão.
+		 */
 		val botaoReflexao = JButton("Reflexão")
+
+		/**
+		 * Botão para inserir regiões codificadas.
+		 */
 		val botaoRegioesCodificadas = JButton("Regiões Codificadas")
+
+		/**
+		 * Botão para inserir equação paramétrica.
+		 */
 		val botaoEquacaoParametrica = JButton("Equação Paramétrica")
 
+		/**
+		 * Tratador de cliques nos botões.
+		 */
 		val buttonHandler = ActionListener { p0 ->
 			if (p0 != null)
 			{
@@ -52,6 +103,9 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 			}
 		}
 
+		/**
+		 * Constrói uma nova instância deste objeto anônimo.
+		 */
 		init
 		{
 			layout = BoxLayout(this, BoxLayout.Y_AXIS)
@@ -94,18 +148,49 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 		}
 	}
 
+	/**
+	 * Barra de status.
+	 */
 	private val barraStatus = JLabel("Mouse fora da área de desenho")
 
+	/**
+	 * Barra de menu.
+	 */
 	private val barraMenu = object : JMenuBar()
 	{
+		/**
+		 * Menu arquivo.
+		 */
 		private val menuArquivo = JMenu("Arquivo")
+
+		/**
+		 * Menu editar.
+		 */
 		private val menuEditar = JMenu("Editar")
+
+		/**
+		 * Item salvar do menu arquivo.
+		 */
 		private val itemSalvar = JMenuItem("Salvar")
+
+		/**
+		 * Item abrir do menu arquivo.
+		 */
 		private val itemAbrir = JMenuItem("Abrir")
+
+		/**
+		 * Item desfazer operação gráfica do menu editar.
+		 */
 		private val itemDesfazerOperacaoGrafica = JMenuItem("Desfazer operação gráfica")
+
+		/**
+		 * Item desfazer inserção de elemento gráfico do menu editar.
+		 */
 		private val itemDesfazerInsercaoElementoGrafico = JMenuItem("Desfazer inserção de elemento gráfico")
 
-
+		/**
+		 * Constrói uma nova instância desta objeto anônimo.
+		 */
 		init
 		{
 			// Configurando mnemônicos
@@ -146,6 +231,9 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 		}
 	}
 
+	/**
+	 * Constrói uma nova instância de JanelaPrincipal.
+	 */
 	init
 	{
 		// Área de desenho
@@ -158,16 +246,33 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 		jMenuBar = barraMenu
 	}
 
+	/**
+	 * Área que será feito o desenho.
+	 */
 	inner class AreaDesenho : JPanel()
 	{
+		/**
+		 * Tratador que cliques do mouse.
+		 */
 		private val mouseHandler = MouseHandler()
+
+		/**
+		 * Elementos gráficos a serem mostrados.
+		 */
 		val elementosGraficos = mutableSetOf<ElementoGrafico>()
 
+		/**
+		 * Constrói uma nova instância de AreaDesenho.
+		 */
 		init
 		{
 			addMouseListener(mouseHandler)
 		}
 
+		/**
+		 * Desenha os elementos gráficos.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 */
 		override fun paintComponent(g: Graphics?)
 		{
 			super.paintComponent(g)
@@ -177,6 +282,11 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 			}
 		}
 
+		/**
+		 * Executa a função apropriada ao elemento gráfico a ser renderizado.
+		 * @param elementoGrafico Elemento gráfico a ser renderizado.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 */
 		private fun selecionarElementoGrafico(elementoGrafico: ElementoGrafico, g: Graphics?)
 		{
 			when (elementoGrafico)
@@ -191,6 +301,11 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 			}
 		}
 
+		/**
+		 * Renderiza um polígono simples.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param elementoGrafico Polígono simples a ser renderizado.
+		 */
 		private fun poligonoSimples(g: Graphics?, elementoGrafico: PoligonoSimples)
 		{
 			if (g != null)
@@ -198,18 +313,37 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 					selecionarElementoGrafico(elemento, g)
 		}
 
+		/**
+		 * Renderiza um ponto.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param p Ponto a ser renderizado.
+		 */
 		private fun ponto(g: Graphics?, p: Ponto)
 		{
 			if (p.x != null && p.y != null)
 				g?.drawOval(p.x!!, p.y!!, 1, 1)
 		}
 
+		/**
+		 * Renderiza uma reta utilizado o DDA.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param p1 Ponto inicial da reta.
+		 * @param p2 Ponto final da reta.
+		 */
 		private fun dda(g: Graphics?, p1: Ponto?, p2: Ponto?)
 		{
 			if (g != null && p1 != null && p2 != null && p1.x != null && p1.y != null && p2.x != null && p2.y != null)
 				dda(g, p1.x!!, p1.y!!, p2.x!!, p2.y!!)
 		}
 
+		/**
+		 * Renderiza uma reta utilizando o DDA.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param x1 X do ponto inicial.
+		 * @param y1 Y do ponto inicial.
+		 * @param x2 X do ponto final.
+		 * @param y2 Y do ponto final.
+		 */
 		private fun dda(g: Graphics, x1: Int, y1: Int, x2: Int, y2: Int)
 		{
 			val dx: Int = x2 - x1
@@ -228,12 +362,26 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 			}
 		}
 
+		/**
+		 * Renderiza uma reta utilizando o Bresenham.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param p1 Ponto inicial da reta.
+		 * @param p2 Ponto final da reta.
+		 */
 		private fun bresenhamReta(g: Graphics?, p1: Ponto?, p2: Ponto?)
 		{
 			if (g != null && p1 != null && p2 != null && p1.x != null && p1.y != null && p2.x != null && p2.y != null)
 				bresenhamReta(g, p1.x!!, p1.y!!, p2.x!!, p2.y!!)
 		}
 
+		/**
+		 * Renderiza uma reta utilizando o Bresenham para reta.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param x1 X do ponto inicial.
+		 * @param y1 Y do ponto inicial.
+		 * @param x2 X do ponto final.
+		 * @param y2 Y do ponto final.
+		 */
 		private fun bresenhamReta(g: Graphics, x1: Int, y1: Int, x2: Int, y2: Int)
 		{
 			var dx: Int = x2 - x1
@@ -277,12 +425,24 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 			}
 		}
 
+		/**
+		 * Renderiza uma circunferência utilizando o Bresenham para circunferência.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param centro Centro da circunferência.
+		 * @param raio Raio da circunferência.
+		 */
 		private fun bresenhamCircunferencia(g: Graphics?, centro: Ponto?, raio: Int?)
 		{
 			if (g != null && centro != null && raio != null && centro.x != null && centro.y != null)
 				bresenhamCircunferencia(g, centro.x!!, centro.y!!, raio)
 		}
 
+		/**
+		 * Função plotaSimetricos do Bresenham para circunferência.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param xc X do centro da circunferência.
+		 * @param yc Y do centro da circunferência.
+		 */
 		private fun plotaSimetricos(g: Graphics, x: Int, y: Int, xc: Int, yc: Int)
 		{
 			g.drawOval(xc + x, yc + y, 1, 1)
@@ -295,6 +455,13 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 			g.drawOval(xc - y, yc - x, 1, 1)
 		}
 
+		/**
+		 * Renderiza uma circunferência utilizando o Bresenham para circunferência.
+		 * @param g Recurso do java que permite desenhar elementos gráficos.
+		 * @param xc X do centro da circunferência.
+		 * @param yc Y do centro da circunferência.
+		 * @param r Raio da circunferência.
+		 */
 		private fun bresenhamCircunferencia(g: Graphics, xc: Int, yc: Int, r: Int)
 		{
 			var x: Int = 0
@@ -314,8 +481,15 @@ class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trab
 			}
 		}
 
+		/**
+		 * Tratador de cliques do mouse.
+		 */
 		inner class MouseHandler : MouseAdapter()
 		{
+			/**
+			 * Ação realizada quando o mouse clica.
+			 * @param event Evento do mouse.
+			 */
 			override fun mouseClicked(event: MouseEvent?)
 			{
 				if (event != null)

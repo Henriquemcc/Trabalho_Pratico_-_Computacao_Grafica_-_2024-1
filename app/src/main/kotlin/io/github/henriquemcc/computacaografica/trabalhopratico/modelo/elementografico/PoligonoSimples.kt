@@ -6,12 +6,30 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
 
+/**
+ * Representa um polígono simples.
+ */
 class PoligonoSimples : Poligono()
 {
+	/**
+	 * Quantidade de lados do polígono.
+	 */
 	var quantidadeLados: Int? = null
+
+	/**
+	 * Algoritmo da reta do polígono.
+	 */
 	var algoritmoReta: AlgoritmoReta? = null
+
+	/**
+	 * Pontos do polígono.
+	 */
 	private val pontos = mutableListOf<Ponto>()
 
+	/**
+	 * Adiciona um ponto no polígono.
+	 * @param ponto Ponto a ser adicionado.
+	 */
 	fun adicionarPonto(ponto: Ponto)
 	{
 		if (quantidadeLados != null && algoritmoReta != null)
@@ -25,6 +43,9 @@ class PoligonoSimples : Poligono()
 		}
 	}
 
+	/**
+	 * Transforma os pontos em retas.
+	 */
 	private fun transformarPontosEmRetas()
 	{
 		if (pontos.size == quantidadeLados)
@@ -37,6 +58,11 @@ class PoligonoSimples : Poligono()
 		}
 	}
 
+	/**
+	 * Gera um novo polígono simples refletido.
+	 * @param reflexao Reflexão a ser realizada.
+	 * @return Polígono simples refletido.
+	 */
 	override fun reflexao(reflexao: Reflexao): PoligonoSimples
 	{
 		val novoPoligonoSimples = PoligonoSimples()
@@ -48,6 +74,11 @@ class PoligonoSimples : Poligono()
 		return novoPoligonoSimples
 	}
 
+	/**
+	 * Gera um novo polígono simples escalado.
+	 * @param escala Escala a ser realizada.
+	 * @return Polígono simples escalado.
+	 */
 	override fun escala(escala: Escala): PoligonoSimples
 	{
 		val novoPoligonoSimples = PoligonoSimples()
@@ -59,6 +90,11 @@ class PoligonoSimples : Poligono()
 		return novoPoligonoSimples
 	}
 
+	/**
+	 * Gera um novo polígono simples rotacionado.
+	 * @param rotacao Rotação a ser realizada.
+	 * @return Polígono simples rotacionado.
+	 */
 	override fun rotacao(rotacao: Rotacao): PoligonoSimples
 	{
 		val novoPoligonoSimples = PoligonoSimples()
@@ -70,6 +106,11 @@ class PoligonoSimples : Poligono()
 		return novoPoligonoSimples
 	}
 
+	/**
+	 * Gera um novo polígono simples transladado.
+	 * @param translacao Translação a ser realizada.
+	 * @return Polígono simples transladado.
+	 */
 	override fun translacao(translacao: Translacao): PoligonoSimples
 	{
 		val novoPoligonoSimples = PoligonoSimples()
@@ -81,6 +122,10 @@ class PoligonoSimples : Poligono()
 		return novoPoligonoSimples
 	}
 
+	/**
+	 * Clona o polígono simples.
+	 * @return Polígono simples clonado.
+	 */
 	override fun clone(): PoligonoSimples
 	{
 		val novoPoligonoSimples = PoligonoSimples()

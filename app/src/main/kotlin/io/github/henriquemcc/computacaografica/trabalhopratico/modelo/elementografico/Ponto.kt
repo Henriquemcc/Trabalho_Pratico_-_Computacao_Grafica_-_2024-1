@@ -8,8 +8,18 @@ import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin
 
+/**
+ * Representa um ponto.
+ * @param x Posição no eixo x.
+ * @param y Posição no eixo y.
+ */
 class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 {
+	/**
+	 * Gera um novo ponto rotacionado.
+	 * @param rotacao Rotação a ser realizada.
+	 * @return Ponto rotacionado.
+	 */
 	override fun rotacao(rotacao: Rotacao): Ponto
 	{
 		val novoPonto = Ponto(x, y)
@@ -23,6 +33,11 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 		return novoPonto
 	}
 
+	/**
+	 * Gera um novo ponto escalado.
+	 * @param escala Escala a ser realizada.
+	 * @return Ponto escalado.
+	 */
 	override fun escala(escala: Escala): Ponto
 	{
 		val novoPonto = Ponto(x, y)
@@ -34,6 +49,11 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 		return novoPonto
 	}
 
+	/**
+	 * Gera um novo ponto transladado.
+	 * @param translacao Translação a ser realizada.
+	 * @return Ponto transladado.
+	 */
 	override fun translacao(translacao: Translacao): Ponto
 	{
 		val novoPonto = Ponto(x, y)
@@ -45,6 +65,11 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 		return novoPonto
 	}
 
+	/**
+	 * Gera um novo ponto refletido.
+	 * @param reflexao Reflexão a ser realizada.
+	 * @return Ponto refletido.
+	 */
 	override fun reflexao(reflexao: Reflexao): Ponto
 	{
 		val novoPonto = Ponto(x, y)
@@ -73,6 +98,10 @@ class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 		return novoPonto
 	}
 
+	/**
+	 * Clona o ponto.
+	 * @return Ponto clonado.
+	 */
 	override fun clone(): Ponto
 	{
 		return Ponto(x, y)

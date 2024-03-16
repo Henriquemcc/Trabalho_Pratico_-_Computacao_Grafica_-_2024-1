@@ -6,12 +6,30 @@ import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
 
+/**
+ * Janela para obter os dados de translação.
+ * @param controladorGrafico Controlador gráfico que instanciou esta classe.
+ */
 class JanelaTranslacao(private val controladorGrafico: ControladorGrafico) : JFrame("Translação")
 {
+	/**
+	 * Entrada de texto para o deslocamento de X.
+	 */
 	private val jTextFieldDeslocamentoX = IncreaseDecreaseJTextField("Deslocamento X", 0)
+
+	/**
+	 * Entrada de texto para o deslocamento de Y.
+	 */
 	private val jTextFieldDeslocamentoY = IncreaseDecreaseJTextField("Deslocamento Y", 0)
+
+	/**
+	 * Botão OK.
+	 */
 	private val jButtonOk = JButton("OK")
 
+	/**
+	 * Constrói uma nova instância de JanelaTranslacao
+	 */
 	init
 	{
 		// Adicionando listener no botão OK
