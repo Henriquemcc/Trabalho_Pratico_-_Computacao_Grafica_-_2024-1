@@ -8,56 +8,102 @@ import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin
 
+/**
+ * Representa um ponto.
+ * @param x Posição no eixo x.
+ * @param y Posição no eixo y.
+ */
 class Ponto(var x: Int? = null, var y: Int? = null) : ElementoGrafico()
 {
-	override fun rotacao(rotacao: Rotacao)
+	/**
+	 * Gera um novo ponto rotacionado.
+	 * @param rotacao Rotação a ser realizada.
+	 * @return Ponto rotacionado.
+	 */
+	override fun rotacao(rotacao: Rotacao): Ponto
 	{
+		val novoPonto = Ponto(x, y)
 		if (x != null && y != null && rotacao.angulo != null)
 		{
 			val newX = (x!!.toDouble() * cos(rotacao.angulo!!) - y!!.toDouble() * sin(rotacao.angulo!!)).roundToInt()
 			val newY = (x!!.toDouble() * sin(rotacao.angulo!!) + y!!.toDouble() * cos(rotacao.angulo!!)).roundToInt()
-			this.x = newX
-			this.x = newY
+			novoPonto.x = newX
+			novoPonto.y = newY
 		}
+		return novoPonto
 	}
 
-	override fun escala(escala: Escala)
+	/**
+	 * Gera um novo ponto escalado.
+	 * @param escala Escala a ser realizada.
+	 * @return Ponto escalado.
+	 */
+	override fun escala(escala: Escala): Ponto
 	{
+		val novoPonto = Ponto(x, y)
 		if (escala.x != null && escala.y != null)
 		{
-			x = x?.toDouble()?.times(escala.x!!)?.roundToInt()
-			y = y?.toDouble()?.times(escala.y!!)?.roundToInt()
+			novoPonto.x = x?.toDouble()?.times(escala.x!!)?.roundToInt()
+			novoPonto.y = y?.toDouble()?.times(escala.y!!)?.roundToInt()
 		}
+		return novoPonto
 	}
 
-	override fun translacao(translacao: Translacao)
+	/**
+	 * Gera um novo ponto transladado.
+	 * @param translacao Translação a ser realizada.
+	 * @return Ponto transladado.
+	 */
+	override fun translacao(translacao: Translacao): Ponto
 	{
+		val novoPonto = Ponto(x, y)
 		if (translacao.x != null && translacao.y != null)
 		{
-			x = x?.plus(translacao.x!!)
-			y = y?.plus(translacao.y!!)
+			novoPonto.x = x?.plus(translacao.x!!)
+			novoPonto.y = y?.plus(translacao.y!!)
 		}
+		return novoPonto
 	}
 
-	override fun reflexao(reflexao: Reflexao)
+	/**
+	 * Gera um novo ponto refletido.
+	 * @param reflexao Reflexão a ser realizada.
+	 * @return Ponto refletido.
+	 */
+	override fun reflexao(reflexao: Reflexao): Ponto
 	{
-		when(reflexao.tipoReflexao)
+		val novoPonto = Ponto(x, y)
+		when (reflexao.tipoReflexao)
 		{
 			Reflexao.TipoReflexao.EM_RELACAO_EIXO_X ->
 			{
-				y = y?.times(-1)
-			}
-			Reflexao.TipoReflexao.EM_RELACAO_EIXO_Y ->
-			{
-				x = x?.times(-1)
-			}
-			Reflexao.TipoReflexao.EM_RELACAO_EIXO_XY ->
-			{
-				x = x?.times(-1)
-				y = y?.times(-1)
+				novoPonto.y = y?.times(-1)
 			}
 
-			null -> {}
+			Reflexao.TipoReflexao.EM_RELACAO_EIXO_Y ->
+			{
+				novoPonto.x = x?.times(-1)
+			}
+
+			Reflexao.TipoReflexao.EM_RELACAO_EIXO_XY ->
+			{
+				novoPonto.x = x?.times(-1)
+				novoPonto.y = y?.times(-1)
+			}
+
+			null ->
+			{
+			}
 		}
+		return novoPonto
+	}
+
+	/**
+	 * Clona o ponto.
+	 * @return Ponto clonado.
+	 */
+	override fun clone(): Ponto
+	{
+		return Ponto(x, y)
 	}
 }

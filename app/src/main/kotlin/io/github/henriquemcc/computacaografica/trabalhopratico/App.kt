@@ -3,16 +3,15 @@
  */
 package io.github.henriquemcc.computacaografica.trabalhopratico
 
+import io.github.henriquemcc.computacaografica.trabalhopratico.controlador.ControladorGrafico
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.JanelaPrincipal
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.obterResolucaoTela
 import javax.swing.JFrame
 
-val janela = JanelaPrincipal()
-
+/**
+ * Função principal, ponto de entrada no programa.
+ */
 fun main()
 {
-	janela.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
-	janela.size = obterResolucaoTela()
-	janela.extendedState = JFrame.MAXIMIZED_BOTH
-	janela.isVisible = true
+	val controladorGrafico = ControladorGrafico()
 }

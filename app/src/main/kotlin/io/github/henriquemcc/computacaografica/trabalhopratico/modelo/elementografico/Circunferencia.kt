@@ -5,25 +5,67 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
 
+/**
+ * Representa uma circunferência.
+ * @param centro Posição do cento da circunferência.
+ * @param raio Raio da circunferência.
+ */
 class Circunferencia(var centro: Ponto? = null, var raio: Int? = null) : ElementoGrafico()
 {
-	override fun rotacao(rotacao: Rotacao)
+	/**
+	 * Gera uma nova circunferência rotacionada.
+	 * @param rotacao Rotação a ser realizada.
+	 * @return Circunferência rotacionada.
+	 */
+	override fun rotacao(rotacao: Rotacao): Circunferencia
 	{
-		centro?.rotacao(rotacao)
+		val novaCircunferencia = Circunferencia(centro, raio)
+		novaCircunferencia.centro = centro?.rotacao(rotacao)
+		return novaCircunferencia
 	}
 
-	override fun escala(escala: Escala)
+	/**
+	 * Gera uma nova circunferência escalada.
+	 * @param escala Escala a ser realizada.
+	 * @return Circunferência escalada.
+	 */
+	override fun escala(escala: Escala): Circunferencia
 	{
-		centro?.escala(escala)
+		val novaCircunferencia = Circunferencia(centro, raio)
+		novaCircunferencia.centro = centro?.escala(escala)
+		return novaCircunferencia
 	}
 
-	override fun translacao(translacao: Translacao)
+	/**
+	 * Gera uma nova circunferência transladada
+	 * @param translacao Translação a ser realizada.
+	 * @return Circunferência transladada.
+	 */
+	override fun translacao(translacao: Translacao): Circunferencia
 	{
-		centro?.translacao(translacao)
+		val novaCircunferencia = Circunferencia(centro, raio)
+		novaCircunferencia.centro = centro?.translacao(translacao)
+		return novaCircunferencia
 	}
 
-	override fun reflexao(reflexao: Reflexao)
+	/**
+	 * Gera uma nova circunferência refletida.
+	 * @param reflexao Reflexão a ser realizada.
+	 * @return Circunferência refletida.
+	 */
+	override fun reflexao(reflexao: Reflexao): Circunferencia
 	{
-		centro?.reflexao(reflexao)
+		val novaCircunferencia = Circunferencia(centro, raio)
+		novaCircunferencia.centro = centro?.reflexao(reflexao)
+		return novaCircunferencia
+	}
+
+	/**
+	 * Clona a circunferência.
+	 * @return Circunferência clonada.
+	 */
+	override fun clone(): Circunferencia
+	{
+		return Circunferencia(centro, raio)
 	}
 }

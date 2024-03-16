@@ -6,11 +6,25 @@ import java.awt.GridLayout
 import javax.swing.JButton
 import javax.swing.JFrame
 
-class JanelaRotacao(private val controladorGrafico: ControladorGrafico): JFrame("Rotação")
+/**
+ * Janela para obter os dados de rotação.
+ * @param controladorGrafico Controlador gráfico que instanciou esta classe.
+ */
+class JanelaRotacao(private val controladorGrafico: ControladorGrafico) : JFrame("Rotação")
 {
+	/**
+	 * Entrada de texto para ângulo.
+	 */
 	private val jTextFieldAngulo = IncreaseDecreaseJTextField("Ângulo")
+
+	/**
+	 * Botão OK
+	 */
 	private val jButtonOk = JButton("OK")
 
+	/**
+	 * Constrói uma nova instância de JanelaRotacao
+	 */
 	init
 	{
 		// Adicionando listener no botão OK
@@ -18,7 +32,7 @@ class JanelaRotacao(private val controladorGrafico: ControladorGrafico): JFrame(
 			val rotacao = Rotacao()
 			rotacao.angulo = jTextFieldAngulo.jTextField.text.toDouble()
 			dispose()
-			controladorGrafico.aplicarRotacao(rotacao)
+			controladorGrafico.adicionarRotacao(rotacao)
 		}
 
 		// Configurando o layout

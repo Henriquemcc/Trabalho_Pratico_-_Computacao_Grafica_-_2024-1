@@ -6,21 +6,45 @@ import java.awt.GridLayout
 import javax.swing.*
 import javax.swing.border.TitledBorder
 
-class JanelaPoligono(val poligonoSimples: PoligonoSimples): JFrame("Polígono")
+/**
+ * Janela para obter os dados do polígono a ser construído.
+ * @param poligonoSimples Polígono simples que terá seus dados obtidos.
+ */
+class JanelaPoligono(val poligonoSimples: PoligonoSimples) : JFrame("Polígono")
 {
-
+	/**
+	 * Campo de texto para a quantidade de lados do polígono.
+	 */
 	private val jTextFieldQuantidadeLados = IncreaseDecreaseJTextField("Quantidade de lados", 3)
 
-	private val jPanelAlgoritmoReta = object: JPanel() {
+	/**
+	 * JPanel para obter o algoritmo da reta.
+	 */
+	private val jPanelAlgoritmoReta = object : JPanel()
+	{
+		/**
+		 * Botão para selecionar o DDA.
+		 */
 		val jRadioButtonDda = JRadioButton("DDA")
+
+		/**
+		 * Botão para selecionar o Bresenham.
+		 */
 		val jRadioButtonBresenham = JRadioButton("Bresenham")
+
+		/**
+		 * Grupo de botões contendo os botões DDA e o Bresenham.
+		 */
 		val buttonGroup = ButtonGroup()
 
+		/**
+		 * Constrói uma nova instância do objeto anônimo herdeiro de JPanel.
+		 */
 		init
 		{
 			layout = GridLayout(2, 1)
 			border = TitledBorder("Algoritmo da Reta")
-			
+
 			// Adicionando JRadioButtons ao ButtonGroup
 			buttonGroup.add(jRadioButtonDda)
 			buttonGroup.add(jRadioButtonBresenham)
@@ -31,17 +55,23 @@ class JanelaPoligono(val poligonoSimples: PoligonoSimples): JFrame("Polígono")
 		}
 	}
 
+	/**
+	 * Botão OK.
+	 */
 	private val jButtonOk = JButton("OK")
 
+	/**
+	 * Constrói uma nova instância de JanelaPoligono.
+	 */
 	init
 	{
 		// Adicionando listener no botão OK
-		jButtonOk.addActionListener{
+		jButtonOk.addActionListener {
 			val quantidadeLados = jTextFieldQuantidadeLados.jTextField.text.toIntOrNull()
 			poligonoSimples.quantidadeLados = quantidadeLados
 			poligonoSimples.algoritmoReta = if (jPanelAlgoritmoReta.jRadioButtonDda.isSelected) AlgoritmoReta.DDA
-			                                else if (jPanelAlgoritmoReta.jRadioButtonBresenham.isSelected) AlgoritmoReta.Bresenham
-											else null
+			else if (jPanelAlgoritmoReta.jRadioButtonBresenham.isSelected) AlgoritmoReta.Bresenham
+			else null
 			dispose()
 		}
 

@@ -8,13 +8,35 @@ import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JRadioButton
 
-class JanelaAlgoritmoReta(private val reta: Reta): JFrame("Algoritmo da Reta")
+/**
+ * Janela para obter o algoritmo da reta.
+ * @param reta Reta para qual está sendo buscado o algoritmo.
+ */
+class JanelaAlgoritmoReta(private val reta: Reta) : JFrame("Algoritmo da Reta")
 {
+	/**
+	 * Botão para selecionar o DDA.
+	 */
 	private val jRadioButtonDda = JRadioButton("DDA")
+
+	/**
+	 * Botão para selecionar o Bresenham.
+	 */
 	private val jRadioButtonBresenham = JRadioButton("Bresenham")
+
+	/**
+	 * Botão OK.
+	 */
 	private val jButtonOk = JButton("OK")
+
+	/**
+	 * Grupo de botões contendo os botões do DDA e do Bresenham.
+	 */
 	private val buttonGroup = ButtonGroup()
 
+	/**
+	 * Constrói uma nova instância da classe JanelaAlgoritmoReta.
+	 */
 	init
 	{
 		// Adicionando JRadioButtons ao ButtonGroup
@@ -30,7 +52,7 @@ class JanelaAlgoritmoReta(private val reta: Reta): JFrame("Algoritmo da Reta")
 		}
 
 		// Configurando o layout
-		layout = GridLayout(3,1)
+		layout = GridLayout(3, 1)
 
 		// Adicionando mnemônicos
 		jRadioButtonDda.setMnemonic('D')
