@@ -4,13 +4,17 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.elementogr
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.*
 import io.github.henriquemcc.computacaografica.trabalhopratico.visao.*
 import java.awt.event.MouseEvent
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 {
-	private val elementosGraficos = mutableListOf<ElementoGrafico>()
-	private val operacoesGraficas = mutableListOf<OperacaoGrafica>()
+	private var elementosGraficos = mutableListOf<ElementoGrafico>()
+	private var operacoesGraficas = mutableListOf<OperacaoGrafica>()
 
 	private val elementosGraficosJanela = areaDesenho.elementosGraficos
 
@@ -187,6 +191,44 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 
 	fun desfazerOpercaoGrafica() {
 		operacoesGraficas.removeLast()
+		redesenhar()
+	}
+
+	fun salvarArquivo(path: String) {
+		val fileOutputStream = FileOutputStream(path)
+		val objectOutputStream = ObjectOutputStream(fileOutputStream)
+		objectOutputStream.writeObject(elementosGraficos)
+		objectOutputStream.writeObject(operacoesGraficas)
+		objectOutputStream.close()
+		fileOutputStream.close()
+	}
+
+	fun carregarArquivo(path: String) {
+		val fileInputStream = FileInputStream(path)
+		val objectInputStream = ObjectInputStream(fileInputStream)
+
+		// Obtendo elementos
+		val listaLidaElementosGraficos = objectInputStream.readObject() as MutableList<*>
+		val listaLidaOperacoesGraficas = objectInputStream.readObject() as MutableList<*>
+
+		// Fechando arquivo
+		objectInputStream.close()
+		fileInputStream.close()
+
+		// Obtendo a lista de elementos gráficos
+		val novaListaElementosGrafico = mutableListOf<ElementoGrafico>()
+		for (elemento in listaLidaElementosGraficos) {
+			novaListaElementosGrafico.add(elemento as ElementoGrafico)
+		}
+		elementosGraficos = novaListaElementosGrafico
+
+		// Obtendo a lista de operações
+		val novaListaOperacoesGraficas = mutableListOf<OperacaoGrafica>()
+		for (elemento in listaLidaOperacoesGraficas) {
+			novaListaOperacoesGraficas.add(elemento as OperacaoGrafica)
+		}
+		operacoesGraficas = novaListaOperacoesGraficas
+
 		redesenhar()
 	}
 }

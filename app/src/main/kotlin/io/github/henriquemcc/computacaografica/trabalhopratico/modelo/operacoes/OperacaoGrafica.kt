@@ -1,3 +1,5 @@
 package io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes
 
-abstract class OperacaoGrafica
+import java.io.Serializable
+
+abstract class OperacaoGrafica: Serializable

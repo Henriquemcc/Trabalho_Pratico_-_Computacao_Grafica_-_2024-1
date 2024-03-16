@@ -4,8 +4,9 @@ import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Reflexao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Rotacao
 import io.github.henriquemcc.computacaografica.trabalhopratico.modelo.operacoes.Translacao
+import java.io.Serializable
 
-abstract class ElementoGrafico : Comparable<ElementoGrafico>, Cloneable
+abstract class ElementoGrafico : Comparable<ElementoGrafico>, Cloneable, Serializable
 {
 	var id: Int = 0
 

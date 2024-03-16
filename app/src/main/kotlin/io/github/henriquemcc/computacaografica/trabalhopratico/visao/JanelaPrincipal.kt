@@ -128,6 +128,16 @@ class JanelaPrincipal : JFrame("Trabalho Prático - Computação Gráfica")
 			add(menuEditar)
 
 			// Configurando action listener
+			itemAbrir.addActionListener {
+				val janelaArquivo = JanelaArquivo()
+				val path = janelaArquivo.janelaAbrir()
+				path?.let { controladorGrafico.carregarArquivo(it) }
+			}
+			itemSalvar.addActionListener {
+				val janelaArquivo = JanelaArquivo()
+				val path = janelaArquivo.janelaSalvar()
+				path?.let { controladorGrafico.salvarArquivo(path) }
+			}
 			itemDesfazerOperacaoGrafica.addActionListener {
 				controladorGrafico.desfazerOpercaoGrafica()
 			}
