@@ -13,10 +13,9 @@ import javax.swing.*
 import kotlin.math.abs
 import kotlin.math.round
 
-class JanelaPrincipal : JFrame("Trabalho Prático - Computação Gráfica")
+class JanelaPrincipal(val controladorGrafico: ControladorGrafico) : JFrame("Trabalho Prático - Computação Gráfica")
 {
-	private val areaDesenho = AreaDesenho()
-	private val controladorGrafico = ControladorGrafico(areaDesenho)
+	val areaDesenho = AreaDesenho()
 
 	private val barraFerramentas = object : JPanel()
 	{

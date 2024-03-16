@@ -8,17 +8,29 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
+import javax.swing.JFrame
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
+class ControladorGrafico()
 {
+	private val janelaPrincipal = JanelaPrincipal(this)
+
 	private var elementosGraficos = mutableListOf<ElementoGrafico>()
+
 	private var operacoesGraficas = mutableListOf<OperacaoGrafica>()
 
-	private val elementosGraficosJanela = areaDesenho.elementosGraficos
+	private val elementosGraficosJanela = janelaPrincipal.areaDesenho.elementosGraficos
 
 	private var elementoGraficoSelecionado: ElementoGrafico? = null
+
+	init
+	{
+		janelaPrincipal.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
+		janelaPrincipal.size = obterResolucaoTela()
+		janelaPrincipal.extendedState = JFrame.MAXIMIZED_BOTH
+		janelaPrincipal.isVisible = true
+	}
 
 	fun ativarObtencaoReta()
 	{
@@ -181,7 +193,7 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 			}
 			elementosGraficosJanela.add(elemento)
 		}
-		areaDesenho.repaint()
+		janelaPrincipal.areaDesenho.repaint()
 	}
 
 	fun desfazerInsercaoElementoGrafico() {
