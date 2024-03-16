@@ -40,10 +40,23 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.AppKt"
+    mainClass.set("io.github.henriquemcc.computacaografica.trabalhopratico.AppKt")
 }
 
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+tasks {
+    withType<Jar> {
+        manifest {
+            attributes["Main-Class"] = application.mainClass.get()
+            duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        }
+
+        configurations["compileClasspath"].forEach { file: File ->
+            from(zipTree(file.absoluteFile))
+        }
+    }
 }
