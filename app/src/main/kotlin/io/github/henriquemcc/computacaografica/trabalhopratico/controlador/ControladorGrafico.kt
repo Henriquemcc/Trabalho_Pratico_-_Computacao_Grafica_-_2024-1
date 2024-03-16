@@ -9,7 +9,7 @@ import kotlin.math.sqrt
 
 class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 {
-	private val elementosGraficos = mutableSetOf<ElementoGrafico>()
+	private val elementosGraficos = mutableListOf<ElementoGrafico>()
 	private val operacoesGraficas = mutableListOf<OperacaoGrafica>()
 
 	private val elementosGraficosJanela = areaDesenho.elementosGraficos
@@ -178,5 +178,15 @@ class ControladorGrafico(private val areaDesenho: JanelaPrincipal.AreaDesenho)
 			elementosGraficosJanela.add(elemento)
 		}
 		areaDesenho.repaint()
+	}
+
+	fun desfazerInsercaoElementoGrafico() {
+		elementosGraficos.removeLast()
+		redesenhar()
+	}
+
+	fun desfazerOpercaoGrafica() {
+		operacoesGraficas.removeLast()
+		redesenhar()
 	}
 }

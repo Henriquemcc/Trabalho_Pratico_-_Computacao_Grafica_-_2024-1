@@ -100,8 +100,12 @@ class JanelaPrincipal : JFrame("Trabalho Prático - Computação Gráfica")
 	private val barraMenu = object : JMenuBar()
 	{
 		private val menuArquivo = JMenu("Arquivo")
+		private val menuEditar = JMenu("Editar")
 		private val itemSalvar = JMenuItem("Salvar")
 		private val itemAbrir = JMenuItem("Abrir")
+		private val itemDesfazerOperacaoGrafica = JMenuItem("Desfazer operação gráfica")
+		private val itemDesfazerInsercaoElementoGrafico = JMenuItem("Desfazer inserção de elemento gráfico")
+
 
 		init
 		{
@@ -109,13 +113,27 @@ class JanelaPrincipal : JFrame("Trabalho Prático - Computação Gráfica")
 			menuArquivo.setMnemonic('A')
 			itemSalvar.setMnemonic('S')
 			itemAbrir.setMnemonic('B')
+			menuEditar.setMnemonic('D')
+			itemDesfazerOperacaoGrafica.setMnemonic('Z')
+			itemDesfazerInsercaoElementoGrafico.setMnemonic('I')
 
 			// Adicionando item no menu
 			menuArquivo.add(itemAbrir)
 			menuArquivo.add(itemSalvar)
+			menuEditar.add(itemDesfazerOperacaoGrafica)
+			menuEditar.add(itemDesfazerInsercaoElementoGrafico)
 
 			// Adicionando menu
 			add(menuArquivo)
+			add(menuEditar)
+
+			// Configurando action listener
+			itemDesfazerOperacaoGrafica.addActionListener {
+				controladorGrafico.desfazerOpercaoGrafica()
+			}
+			itemDesfazerInsercaoElementoGrafico.addActionListener {
+				controladorGrafico.desfazerInsercaoElementoGrafico()
+			}
 		}
 	}
 
