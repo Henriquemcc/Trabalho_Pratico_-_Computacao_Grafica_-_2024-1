@@ -11,6 +11,12 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+
+    id("org.jetbrains.dokka") version "1.9.20"
+}
+
+subprojects {
+    apply(plugin = "org.jetbrains.dokka")
 }
 
 repositories {
@@ -53,5 +59,11 @@ tasks {
         configurations["compileClasspath"].forEach { file: File ->
             from(zipTree(file.absoluteFile))
         }
+    }
+}
+
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.dokka:dokka-base:1.9.20")
     }
 }
