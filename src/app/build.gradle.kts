@@ -63,7 +63,7 @@ tasks {
 
     dokkaHtml.configure {
         moduleName.set("Trabalho Prático - Computação Gráfica - 2024-1")
-        outputDirectory.set(layout.buildDirectory.dir("../../../Documentacao"))
+        outputDirectory.set(layout.buildDirectory.dir("../../../docs"))
     }
 }
 
