@@ -40,3 +40,13 @@ Deverão ser entregues:
 Será avaliado, além do conteúdo, a forma de apresentação, a correção no uso da língua portuguesa e a clareza na exposição dos argumentos.
 
 Trabalhos entregues após a data estipulada não serão aceitos. Caso o projeto completo com o código fonte não seja entregue, o trabalho não será aceito.
+
+## Vídeo
+
+Este é o vídeo demonstrando o funcionamento do programa:
+
+[![Demonstração - Trabalho prático - Computação Gráfica - 2024-1](https://img.youtube.com/vi/IewOt3MKv0w/0.jpg)](https://www.youtube.com/watch?v=IewOt3MKv0w)
+
+## Executável
+
+O executável está disponível em [releases](https://github.com/Henriquemcc/Trabalho_Pratico_-_Computacao_Grafica_-_2024-1/releases).
