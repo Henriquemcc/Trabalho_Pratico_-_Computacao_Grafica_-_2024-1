@@ -50,3 +50,11 @@ This is the video demonstrating how the program works (in Portuguese):
 ## Executable
 
 The executable is available in [releases](https://github.com/Henriquemcc/Trabalho_Pratico_-_Computacao_Grafica_-_2024-1/releases).
+
+## User manual
+
+The user manual (in Portuguese) is available through this [link](docs/Manual/Manual_Usuario.pdf).
+
+## Documentation
+
+The documentation (in Portuguese) is available through this [link](https://henriquemcc.github.io/Trabalho_Pratico_-_Computacao_Grafica_-_2024-1/).
