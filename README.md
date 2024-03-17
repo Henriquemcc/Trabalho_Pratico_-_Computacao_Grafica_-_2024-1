@@ -50,3 +50,11 @@ Este é o vídeo demonstrando o funcionamento do programa:
 ## Executável
 
 O executável está disponível em [releases](https://github.com/Henriquemcc/Trabalho_Pratico_-_Computacao_Grafica_-_2024-1/releases).
+
+## Manual de usuário
+
+O manual de usuário está disponível através deste [link](docs/Manual/Manual_Usuario.pdf). 
+
+## Documentação
+
+A documentação está disponível através deste [link](https://henriquemcc.github.io/Trabalho_Pratico_-_Computacao_Grafica_-_2024-1/).
