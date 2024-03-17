@@ -43,11 +43,6 @@ application {
     mainClass.set("io.github.henriquemcc.computacaografica.trabalhopratico.AppKt")
 }
 
-tasks.named<Test>("test") {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
-}
-
 tasks {
     withType<Jar> {
         manifest {
